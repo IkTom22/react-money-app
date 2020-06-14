@@ -1,9 +1,9 @@
-import uuid from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';;
 
-const reducer = (state, action){
+const accountReducer = (state, action)=>{
     switch(action.type){
         case "ADD":
-            return [...state, {id:uuid(), name: action.name, amount: action.amount}];
+            return [...state, {id:uuidv4(), name: action.name, amount: action.amount}];
         case "REMOVE":
             return state.filter(account => account.id !==action.id);
         case "EDIT":
@@ -13,4 +13,4 @@ const reducer = (state, action){
             return state        
     }
 }
-export default reducer;
+export default accountReducer;

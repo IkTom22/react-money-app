@@ -19,4 +19,4 @@ function useLocalStorageReducer(key, defaultVal, reducer) {
   
     return [state, dispatch];
 }
-export { useLocalStorageReducer };
+export default  useLocalStorageReducer ;

@@ -1,10 +1,11 @@
 import React, {createContext} from 'react';
+import accountReducer from '../reducer/accounts.reducer';
 import useLocalStorageReducer from '../hooks/useLocalStorageReducer'
 const defaultAccounts = [
-    {id: 1, name: "Main Account"},
-    {id: 2, name: "Spending Account"},
-    {id: 3, name: "Father's day"},
-    {id: 4, name: "Xmas saving"}
+    {id: 1, name: "Main Account", amount: 2000},
+    {id: 2, name: "Spending Account", amount: 200},
+    {id: 3, name: "Father's day", amount: 50},
+    {id: 4, name: "Xmas saving", amount: 70}
 
 ]
 
