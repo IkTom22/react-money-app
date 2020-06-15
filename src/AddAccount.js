@@ -64,7 +64,7 @@ function AddAccount(){
             >
             <Fade in={open}>
             <div className={classes.paper}>
-                <AddAccountForm/>
+                <AddAccountForm handleClose={handleClose}/>
             </div>
             </Fade>
         </Modal>
