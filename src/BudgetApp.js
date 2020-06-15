@@ -13,7 +13,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 //style={{marginBottom: "2rem", marginTop: "2rem"}}
 const useStyles= makeStyles((theme) => ({
   root: {
-    height: "100vh",
+    height: "auto",
     
   },
   grid: {
