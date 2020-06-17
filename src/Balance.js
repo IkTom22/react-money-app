@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {withStyles} from '@material-ui/core/styles';
+import {BalanceContext} from './contexts/balance.context';
 import styles from './styles/BalanceStyles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -8,9 +9,11 @@ import Divider from '@material-ui/core/Divider';
 
 function Balance(props){
     const {classes} = props;
+    const balance = useContext(BalanceContext);
+     console.log(balance)
     return(
         <Paper elevation={3} className={classes.root} style={{ marginTop: "2rem", width: "90%"}}>
-            <h2 className={classes.title}>Balance: +$3000</h2>
+            <h2 className={classes.title}>Balance: ${balance.mainAccount}</h2>
             <Grid container spacing={2} wrap='nowrap'>
                 <Grid item xs={6} className={classes.details}>
                     <div className={classes.subTitle}>Income</div>

@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';;
+import { v4 as uuidv4 } from 'uuid';
 
 const accountReducer = (state, action)=>{
     switch(action.type){
@@ -8,7 +8,8 @@ const accountReducer = (state, action)=>{
             return state.filter(account => account.id !==action.id);
         case "EDIT":
             return state.map(account => 
-                account.id === action.id ? {...account, amount: action.newAmount} : account)    
+                account.id === action.id ? {...account, amount: action.newAmount} : account) 
+                   
         default: 
             return state        
     }

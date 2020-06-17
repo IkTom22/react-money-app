@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function AddAccount(){
-    const accounts = useContext(DispatchContext);
+    // const accounts = useContext(DispatchContext);
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 

@@ -6,6 +6,7 @@ import Balance from './Balance';
 import AddAccount from './AddAccount';
 import AccountList from './AccountList';
 import {AccountsProvider} from './contexts/accounts.context';
+import {BalanceProvider} from './contexts/balance.context';
 import {makeStyles} from "@material-ui/core/styles";
 import CssBaseline from '@material-ui/core/CssBaseline';
 // import useStyles from './styles/BudgetAppStyles';
@@ -30,13 +31,13 @@ function BugdetApp (props){
           <Paper className={classes.root} elevation={0}>
           <Grid container justify='center' direction='column' alignItems='center' className={classes.grid} maxwidth="m">
             <MenuBar />
-            
+              <BalanceProvider>
               <AccountsProvider>
                 <Balance />
                 <AddAccount />
                 <AccountList />
               </AccountsProvider>
-              
+              </BalanceProvider>
             </Grid>
           </Paper>
       </React.Fragment>

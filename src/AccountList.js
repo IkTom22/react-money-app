@@ -15,7 +15,7 @@ function AccountList(){
                     <React.Fragment key={i}>
                         <Paper style={{width:"90%" ,marginTop: "1rem"}}>
                         <List>
-                        <Account {...account} key={account.id}/>
+                            <Account {...account} key={account.id}/>
                         </List>
                             
                         </Paper>

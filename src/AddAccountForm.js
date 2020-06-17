@@ -48,6 +48,7 @@ function AddAccountForm(props){
                 value={value}
                 onChange={handleChange} 
                 label="Account Name" 
+                required
                 fullWidth
             />
             <Fab 
