@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import Account from './Account';
-import {AccountsContext} from './contexts/accounts.context';
+import {AccountsContext} from '../contexts/accounts.context';
 import Grid from '@material-ui/core/Grid'
 
 function AccountList(){

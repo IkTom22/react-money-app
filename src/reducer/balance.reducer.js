@@ -2,8 +2,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 const balanceReducer = (state, action)=>{
  switch(action.type){
-     case "ADD_INC":
-         return {...state, mainAccount: state.mainAccount + action.income, inc: state.inc + action.income}
+     case "Edit_BALANCE":
+         return {...state, mainAccount: action.mainAccount}
          default: 
          return state
  }

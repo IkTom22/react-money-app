@@ -1,5 +1,5 @@
 import React, {useContext, memo} from 'react';
-import {DispatchContext, AccountsContext} from './contexts/accounts.context';
+import {DispatchContext, AccountsContext} from '../contexts/accounts.context';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';

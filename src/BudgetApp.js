@@ -2,9 +2,9 @@ import React from 'react';
 import Paper from "@material-ui/core/Paper";
 import Grid from '@material-ui/core/Grid';
 import MenuBar from './MenuBar';
-import Balance from './Balance';
-import AddAccount from './AddAccount';
-import AccountList from './AccountList';
+import BalancePage from './balance/BalancePage';
+import ActionButtonHoler from './ActionButtonsHolder';
+import AccountList from './accounts/AccountList';
 import {AccountsProvider} from './contexts/accounts.context';
 import {BalanceProvider} from './contexts/balance.context';
 import {makeStyles} from "@material-ui/core/styles";
@@ -33,8 +33,8 @@ function BugdetApp (props){
             <MenuBar />
               <BalanceProvider>
               <AccountsProvider>
-                <Balance />
-                <AddAccount />
+                <BalancePage />
+                <ActionButtonHoler />
                 <AccountList />
               </AccountsProvider>
               </BalanceProvider>

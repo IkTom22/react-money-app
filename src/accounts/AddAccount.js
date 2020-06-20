@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import AddAccountForm from './AddAccountForm';
 import Fab from '@material-ui/core/Fab';
-import {DispatchContext} from './contexts/accounts.context';
+import {DispatchContext} from '../contexts/accounts.context';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';

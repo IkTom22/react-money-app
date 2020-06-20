@@ -5,16 +5,10 @@ import {useLocalStorageReducer} from '../hooks/useLocalStorageReducer';
 
 const defaultBalance = {
     mainAccount: 2000,
-    inc: 400,
-    exp: 700
+    inc: 0,
+    exp: 0
 }
-// const defaultBalance = [
-    
-//     {id: 2, name: "Spending Account", amount: 200},
-//     {id: 3, name: "Father's day", amount: 50},
-//     {id: 4, name: "Xmas saving", amount: 70}
 
-// ];
 
 export const BalanceContext = createContext();     
 export const DispatchBalContext = createContext();
