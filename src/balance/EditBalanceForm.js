@@ -34,12 +34,14 @@ function EditBalanceForm(props){
     const [value, handleChange, reset] = useInputState("");
     const dispatch = useContext(DispatchBalContext);
     const classes = useStyles();
+    console.log(typeof(value))
     return(
         <form 
             className={classes.root} 
             onSubmit={e => {
                 e.preventDefault();
-                dispatch({type: "Edit_BALANCE", mainAccount: value})
+                //dispatch({type: "Edit_BALANCE", mainAccount: value})
+                dispatch({type: "ADD_INC", inc: parseFloat(value)})
                 reset();
                 props.handleClose();
                 }}
