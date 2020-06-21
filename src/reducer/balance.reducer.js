@@ -6,8 +6,10 @@ const balanceReducer = (state, action)=>{
          return {...state, mainAccount: action.mainAccount}
     case "ADD_INC":
         return {...state, mainAccount: parseFloat(state.mainAccount) + action.inc, inc: parseFloat(state.inc) + action.inc}
+    case "MINUS_EXP":
+        return {...state, mainAccount: parseFloat(state.mainAccount) - action.exp, inc: parseFloat(state.exp) + action.exp}
     default: 
-         return state
+        return state
  }
 }
 export default balanceReducer;

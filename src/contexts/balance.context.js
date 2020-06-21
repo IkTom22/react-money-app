@@ -1,4 +1,4 @@
-import React, {createContext} from 'react';
+import React, {createContext, memo} from 'react';
 import balanceReducer from '../reducer/balance.reducer';
 import {useLocalStorageReducer} from '../hooks/useLocalStorageReducer';
 
@@ -13,7 +13,7 @@ const defaultBalance = {
 export const BalanceContext = createContext();     
 export const DispatchBalContext = createContext();
 
-export function BalanceProvider(props){
+export const BalanceProvider=memo((props)=>{
     //  const [balance, setBalance] = useState(defaultBalance)
     const [mainBalance, dispatch] = useLocalStorageReducer("mainBalance", defaultBalance, balanceReducer);
     console.log(mainBalance)
@@ -28,4 +28,4 @@ export function BalanceProvider(props){
 
     )
 
-}
+})

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, memo} from 'react';
 import useInputState from'../hooks/useInputState';
 import {DispatchBalContext} from '../contexts/balance.context';
 import { makeStyles } from '@material-ui/core/styles';
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
     
-function EditBalanceForm(props){
+const EditBalanceForm = memo((props)=>{
     const [value, handleChange, reset] = useInputState("");
     const dispatch = useContext(DispatchBalContext);
     const classes = useStyles();
@@ -41,7 +41,7 @@ function EditBalanceForm(props){
             onSubmit={e => {
                 e.preventDefault();
                 //dispatch({type: "Edit_BALANCE", mainAccount: value})
-                dispatch({type: "ADD_INC", inc: parseFloat(value)})
+                dispatch({type: "Edit_BALANCE", mainAccount: parseFloat(value)})
                 reset();
                 props.handleClose();
                 }}
@@ -63,5 +63,5 @@ function EditBalanceForm(props){
             </Fab>
         </form>
     )
-}
+})
 export default EditBalanceForm;
