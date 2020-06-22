@@ -6,7 +6,8 @@ import {useLocalStorageReducer} from '../hooks/useLocalStorageReducer';
 const defaultBalance = {
     mainAccount: 0,
     inc: 0,
-    exp: 0
+    exp: 0,
+    
 }
 
 

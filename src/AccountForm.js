@@ -1,12 +1,14 @@
-import React, {useContext} from 'react';
-import useInputState from'../hooks/useInputState';
-import IncType from './IncCategories';
-import {DispatchBalContext} from '../contexts/balance.context';
+import React, {useContext, useState} from 'react';
+import useInputState from'./hooks/useInputState';
+import IncCategories from './income/IncCategories';
+import {DispatchBalContext} from './contexts/balance.context';
+import {DispatchIncsContext} from './contexts/inc/incItems.context';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import DoneIcon from '@material-ui/icons/Done';
-
+import AddAccount from './balance/BalanceEdit';
+import { v4 as uuidv4 } from 'uuid';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -30,26 +32,41 @@ const useStyles = makeStyles((theme) => ({
 }));
 
  
-function AddIncomeForm(props){
-    const [value, handleChange, reset] = useInputState("");
+function AccountForm(props){
+    const [values, handleChange, reset] = useInputState("");
     const dispatch = useContext(DispatchBalContext);
+    const dispatchIncs = useContext(DispatchIncsContext);
     const classes = useStyles();
+
+
     return(
         <form 
             className={classes.root} 
             onSubmit={e => {
                 e.preventDefault();
-                dispatch({type: "ADD_INC", inc: parseFloat(value)})
+                if(props.type==="inc")
+                  dispatch({type: "ADD_INC", inc: values.amount}) 
+                  dispatchIncs({id: uuidv4(), amount: values.amount, category: values.category })
+                    
                 reset();
                 props.handleClose();
               }}
         >
-            <IncType />  
+            <IncCategories />
+             
             <TextField 
-                value={value}
+                id= "standard-required"
+                value={values.amount}
                 onChange={handleChange} 
-                label="Add Income" 
+                label={(props.type==="inc") && "Add Income" }
                 required
+                fullWidth
+            />
+            <TextField 
+                id= {(props.type==="inc") && "inc-category"}
+                value={values.category}
+                onChange={handleChange} 
+                label="Add category"
                 fullWidth
             />
             <Fab 
@@ -63,4 +80,4 @@ function AddIncomeForm(props){
         </form>
     )
 }
-export default AddIncomeForm;
+export default AccountForm;

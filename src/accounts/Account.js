@@ -1,5 +1,5 @@
 import React, {useContext, memo} from 'react';
-import {DispatchContext, AccountsContext} from '../contexts/accounts.context';
+import {DispatchContext} from '../contexts/accounts.context';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
       setChecked(newChecked);
     };
   }
-function Account({id, name, amount }) {
+const Account = memo(({id, name, total }) => {
     const dispatch = useContext(DispatchContext);
    
     return (
@@ -41,7 +41,7 @@ function Account({id, name, amount }) {
         <Grid container alignItems="center">
           <ListItem key={id} button style={{width: "70%"}}>
             <ListItemText id={id} primary={name} style={{width: "50%"}}/>
-            <ListItemText id={id} edge="end" style={{width: "30%", textAlign: "right"}}> $ {amount}</ListItemText>
+            <ListItemText id={id} edge="end" style={{width: "30%", textAlign: "right"}}> $ {total}</ListItemText>
           </ListItem>
           
             <ListItemSecondaryAction style={{width:"20%", display: "flex"}}>
@@ -57,6 +57,6 @@ function Account({id, name, amount }) {
        
      
     )
-}
+})
 
 export default Account;

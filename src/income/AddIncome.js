@@ -1,7 +1,7 @@
-import React, {useContext} from 'react';
-import AddIncomeForm from '../income/AddIncomeForm';
+import React from 'react';
+import Form from '../AccountForm';
 import Fab from '@material-ui/core/Fab';
-import {DispatchContext} from '../contexts/accounts.context';
+// import {DispatchContext} from '../contexts/accounts.context';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -62,7 +62,7 @@ function AddIncome(){
             >
             <Fade in={open}>
             <div className={classes.paper}>
-                <AddIncomeForm handleClose={handleClose}/>
+                <Form type="inc" handleClose={handleClose}/>
             </div>
             </Fade>
         </Modal>

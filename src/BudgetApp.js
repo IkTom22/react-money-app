@@ -7,6 +7,7 @@ import ActionButtonHoler from './ActionButtonsHolder';
 import AccountList from './accounts/AccountList';
 import {AccountsProvider} from './contexts/accounts.context';
 import {BalanceProvider} from './contexts/balance.context';
+import {IncItemsProvider} from './contexts/inc/incItems.context';
 import {makeStyles} from "@material-ui/core/styles";
 import CssBaseline from '@material-ui/core/CssBaseline';
 // import useStyles from './styles/BudgetAppStyles';
@@ -32,11 +33,13 @@ function BugdetApp (props){
           <Grid container justify='center' direction='column' alignItems='center' className={classes.grid} maxwidth="m">
             <MenuBar />
               <BalanceProvider>
-              <AccountsProvider>
-                <BalancePage />
-                <ActionButtonHoler />
-                <AccountList />
-              </AccountsProvider>
+                <IncItemsProvider>
+                  <AccountsProvider>
+                    <BalancePage />
+                    <ActionButtonHoler />
+                    <AccountList />
+                  </AccountsProvider>
+                </IncItemsProvider>
               </BalanceProvider>
             </Grid>
           </Paper>

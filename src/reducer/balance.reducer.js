@@ -1,11 +1,16 @@
-import { v4 as uuidv4 } from 'uuid';
+
 
 const balanceReducer = (state, action)=>{
  switch(action.type){
     case "Edit_BALANCE":
          return {...state, mainAccount: action.mainAccount}
     case "ADD_INC":
-        return {...state, mainAccount: parseFloat(state.mainAccount) + action.inc, inc: parseFloat(state.inc) + action.inc}
+        return {
+                ...state, 
+                mainAccount: parseFloat(state.mainAccount) + parseFloat(action.inc), 
+                    inc: parseFloat(state.inc) + parseFloat(action.inc)
+                    
+                }
     case "MINUS_EXP":
         return {...state, mainAccount: parseFloat(state.mainAccount) - action.exp, inc: parseFloat(state.exp) + action.exp}
     default: 

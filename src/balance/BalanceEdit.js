@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import EditBalanceForm from './EditBalanceForm';
 import Fab from '@material-ui/core/Fab';
 // import {DispatchContext} from '../contexts/accounts.context';
@@ -8,7 +8,6 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
 
-import AccountBalanceWalletTwoToneIcon from '@material-ui/icons/AccountBalanceWalletTwoTone';
 // import styles from './styles/AddAccountStyles';
 // import withStyles from '@material-ui/core/withStyles';
 
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-function AddAccount(){
+function BalanceEdit(){
     // const accounts = useContext(DispatchContext);
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
@@ -79,4 +78,4 @@ function AddAccount(){
     )
 }
 
-export default AddAccount;
+export default BalanceEdit;

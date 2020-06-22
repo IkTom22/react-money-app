@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {BalanceContext} from '../contexts/balance.context';
-import EditBalance from './EditBalance';
+import BalanceEdit from './BalanceEdit';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import {withStyles} from '@material-ui/core/styles';
@@ -21,7 +21,7 @@ function Balance(props){
             alignItems="center"
         >
             <div className={classes.subTitle}>
-                Balance   
+                Main Account   
             </div>
             
             <div className={classes.title} >   
@@ -29,7 +29,7 @@ function Balance(props){
             </div>
         
         </Grid>
-        <EditBalance /> 
+        <BalanceEdit /> 
         </List>
     )
 }
