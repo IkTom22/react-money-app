@@ -1,16 +1,25 @@
 import { useState } from "react";
 export default initialVal => {
-  const [values, setValue] = useState({
+  const [values, setValues] = useState({
     name: '',
     amount: '',
-    category: '',
+    category: ''
  
   });
-  const handleChange = e => {
-    setValue(e.target.value);
+  // const handleChange = e => {
+  //   setValue({...state, e.target.value});
+  // };
+  const handleChange = (prop) => (e) => {
+    setValues({ ...values, [prop]: e.target.value });
   };
   const reset = () => {
-    setValue("");
+    setValues({
+      name: '',
+      amount: '',
+      category: ''
+   
+    });
   };
   return [values, handleChange, reset];
+  
 };

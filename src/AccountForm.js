@@ -4,6 +4,7 @@ import IncCategories from './income/IncCategories';
 import {DispatchBalContext} from './contexts/balance.context';
 import {DispatchIncsContext} from './contexts/inc/incItems.context';
 import { makeStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import DoneIcon from '@material-ui/icons/Done';
@@ -40,14 +41,14 @@ function AccountForm(props){
 
 
     return(
-        <form 
+        <form
             className={classes.root} 
             onSubmit={e => {
                 e.preventDefault();
                 if(props.type==="inc")
                   dispatch({type: "ADD_INC", inc: values.amount}) 
                   dispatchIncs({id: uuidv4(), amount: values.amount, category: values.category })
-                    
+                  console.log(values.amount)  
                 reset();
                 props.handleClose();
               }}
@@ -55,17 +56,17 @@ function AccountForm(props){
             <IncCategories />
              
             <TextField 
-                id= "standard-required"
+                id="standard-number-required"
                 value={values.amount}
-                onChange={handleChange} 
+                onChange={handleChange('amount')} 
                 label={(props.type==="inc") && "Add Income" }
                 required
                 fullWidth
             />
             <TextField 
-                id= {(props.type==="inc") && "inc-category"}
+                id="standard-basic"
                 value={values.category}
-                onChange={handleChange} 
+                onChange={handleChange('category')} 
                 label="Add category"
                 fullWidth
             />
