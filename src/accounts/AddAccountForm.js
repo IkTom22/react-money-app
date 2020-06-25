@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import useInputState from'../hooks/useInputState';
 import {DispatchContext} from '../contexts/accounts.context';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { v4 as uuidv4 } from 'uuid';
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import DoneIcon from '@material-ui/icons/Done';
@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
-      .spacing.unit * 3}px`,
+    padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme
+      .spacing(3)}px`,
   
     '& > *': {
       margin: theme.spacing(2),
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
  
 function AddAccountForm(props){
-    const [value, handleChange, reset] = useInputState("");
+    const [values, handleChange, reset] = useInputState("");
     const dispatch = useContext(DispatchContext);
     const classes = useStyles();
     return(
@@ -39,14 +39,15 @@ function AddAccountForm(props){
             className={classes.root} 
             onSubmit={e => {
                 e.preventDefault();
-                dispatch({type: "ADD", name: value, amount: 0})
+                dispatch({type: "ADD", id: uuidv4(), name: values.name, amount: 0})
                 reset();
                 props.handleClose();
               }}
         >
             <TextField 
-                value={value}
-                onChange={handleChange} 
+                id="standard-required"
+                value={values.name}
+                onChange={handleChange('name')} 
                 label="Account Name" 
                 required
                 fullWidth

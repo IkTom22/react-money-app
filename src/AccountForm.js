@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import useInputState from'./hooks/useInputState';
-import IncCategories from './income/IncCategories';
+import Categories from './Categories';
 import {DispatchBalContext} from './contexts/balance.context';
 import {DispatchIncsContext} from './contexts/inc/incItems.context';
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,8 +15,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
-      .spacing.unit * 3}px`,
+    marginLeft: '5%',
+    width: '90%',
+    padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme
+      .spacing(3)}px`,
   
     '& > *': {
       margin: theme.spacing(2),
@@ -46,14 +48,14 @@ function AccountForm(props){
             onSubmit={e => {
                 e.preventDefault();
                 if(props.type==="inc")
+                  dispatchIncs({type: "ADD_DETAILS", id: uuidv4(), amount: values.amount, category: values.category, note: "" })
                   dispatch({type: "ADD_INC", inc: values.amount}) 
-                  dispatchIncs({id: uuidv4(), amount: values.amount, category: values.category })
-                  console.log(values.amount)  
+
                 reset();
                 props.handleClose();
               }}
         >
-            <IncCategories />
+            <Categories type={props.type}/>
              
             <TextField 
                 id="standard-number-required"

@@ -3,7 +3,8 @@ export default initialVal => {
   const [values, setValues] = useState({
     name: '',
     amount: '',
-    category: ''
+    category: '',
+    note: ''
  
   });
   // const handleChange = e => {
@@ -16,7 +17,8 @@ export default initialVal => {
     setValues({
       name: '',
       amount: '',
-      category: ''
+      category: '',
+      note: ''
    
     });
   };

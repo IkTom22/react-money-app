@@ -6,7 +6,7 @@ import {withStyles} from '@material-ui/core/styles';
 
 function ActionButtonHoler(){
     return(
-        <Grid container spacing={2} wrap='nowrap'>
+        <Grid container  wrap='nowrap'>
             <AddIncome />
             <AddAccount />
         </Grid>
