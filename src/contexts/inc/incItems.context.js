@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 const defaultIncItems = [
-    {id: uuidv4(), amount: 0, category: "", note: "" }
+    {id: "", amount: 0, title: "", note: "", iconName: "" }
 ]
 
 export const incItemsContext = createContext();

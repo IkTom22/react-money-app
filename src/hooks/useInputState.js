@@ -1,10 +1,13 @@
 import { useState } from "react";
+
+
 export default initialVal => {
   const [values, setValues] = useState({
-    name: '',
+    title: '',
     amount: '',
-    category: '',
-    note: ''
+    iconName: '',
+    note: '',
+    id: ''
  
   });
   // const handleChange = e => {
@@ -13,12 +16,14 @@ export default initialVal => {
   const handleChange = (prop) => (e) => {
     setValues({ ...values, [prop]: e.target.value });
   };
+
   const reset = () => {
     setValues({
-      name: '',
+      title: '',
       amount: '',
-      category: '',
-      note: ''
+      iconName: '',
+      note: '',
+      id: ''
    
     });
   };

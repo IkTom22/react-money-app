@@ -10,13 +10,14 @@ import Fab from '@material-ui/core/Fab';
 import DoneIcon from '@material-ui/icons/Done';
 import AddAccount from './balance/BalanceEdit';
 import { v4 as uuidv4 } from 'uuid';
+import ActionButtonHoler from './ActionButtonsHolder';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginLeft: '5%',
-    width: '90%',
+    
+    width: '100%',
     padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme
       .spacing(3)}px`,
   
@@ -34,28 +35,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
- 
+const newId = uuidv4();
 function AccountForm(props){
-    const [values, handleChange, reset] = useInputState("");
+    const [values, handleChange, handleClick, reset] = useInputState("");
     const dispatch = useContext(DispatchBalContext);
     const dispatchIncs = useContext(DispatchIncsContext);
     const classes = useStyles();
-
-
+   
     return(
         <form
             className={classes.root} 
             onSubmit={e => {
                 e.preventDefault();
                 if(props.type==="inc")
-                  dispatchIncs({type: "ADD_DETAILS", id: uuidv4(), amount: values.amount, category: values.category, note: "" })
+                  dispatchIncs({
+                      type: "ADD_DETAILS", 
+                      id: newId, 
+                      amount: values.amount,  
+                      note: values.note
+                      
+                    })
+                    
                   dispatch({type: "ADD_INC", inc: values.amount}) 
-
-                reset();
+                  // reset();
+                
                 props.handleClose();
+                
               }}
         >
-            <Categories type={props.type}/>
+            <Categories id={newId}  type={props.type}/>
              
             <TextField 
                 id="standard-number-required"
@@ -67,9 +75,9 @@ function AccountForm(props){
             />
             <TextField 
                 id="standard-basic"
-                value={values.category}
-                onChange={handleChange('category')} 
-                label="Add category"
+                value={values.note}
+                onChange={handleChange('note')} 
+                label="Memo"
                 fullWidth
             />
             <Fab 
