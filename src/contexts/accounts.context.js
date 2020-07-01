@@ -11,7 +11,9 @@ const defaultAccounts = [
     {
         id: 5,
         name: "Main Account",
-        total: 0
+        total: 0,
+        expLists: [],
+        exp: 0
     }
 
 ];

@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../AccountForm';
+import AccountForm from '../AccountForm';
 import Fab from '@material-ui/core/Fab';
 // import {DispatchContext} from '../contexts/accounts.context';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,7 +7,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import AddIcon from '@material-ui/icons/Add';
-
+import { v4 as uuidv4 } from 'uuid';
 // import styles from './styles/AddAccountStyles';
 // import withStyles from '@material-ui/core/withStyles';
 
@@ -64,7 +64,7 @@ function AddIncome(){
             >
             <Fade in={open}>
             <div className={classes.paper}>
-                <Form type="inc" handleClose={handleClose}/>
+                <AccountForm type="inc" id={uuidv4()} handleClose={handleClose}/>
             </div>
             </Fade>
         </Modal>

@@ -2,21 +2,20 @@ import React, {useContext, useState} from 'react';
 import useInputState from'./hooks/useInputState';
 import Categories from './Categories';
 import {DispatchBalContext} from './contexts/balance.context';
-import {DispatchIncsContext} from './contexts/inc/incItems.context';
+import {DispatchIncsContext, incItemsContext} from './contexts/inc/incItems.context';
 import { makeStyles } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
+import BudgetIcons from './BudgetIcons';
+import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import DoneIcon from '@material-ui/icons/Done';
-import AddAccount from './balance/BalanceEdit';
-import { v4 as uuidv4 } from 'uuid';
-import ActionButtonHoler from './ActionButtonsHolder';
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    
     width: '100%',
     padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme
       .spacing(3)}px`,
@@ -25,54 +24,72 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(2),
       
     },
+    margin: {
+      margin: theme.spacing(1),
+    },
  doneIcon: {
     width: "3rem",
     height: "3rem",
 
-    
     }
    
   },
 }));
 
-const newId = uuidv4();
+
+
+
 function AccountForm(props){
-    const [values, handleChange, handleClick, reset] = useInputState("");
+    const [values, handleChange] = useInputState("");
     const dispatch = useContext(DispatchBalContext);
     const dispatchIncs = useContext(DispatchIncsContext);
+    const incItems = useContext(incItemsContext);
     const classes = useStyles();
-   
+    const {incs, exps} = BudgetIcons; 
+    const {type, id} = props;
+    
+    const index = incItems.findIndex(e => e.id === id);
+    const pickedIcon = incItems[index]
+    console.log(pickedIcon)
     return(
         <form
             className={classes.root} 
             onSubmit={e => {
                 e.preventDefault();
-                if(props.type==="inc")
+                if(type==="inc")
                   dispatchIncs({
                       type: "ADD_DETAILS", 
-                      id: newId, 
+                      id: id,
                       amount: values.amount,  
-                      note: values.note
-                      
+                      note: values.note 
                     })
                     
                   dispatch({type: "ADD_INC", inc: values.amount}) 
-                  // reset();
                 
                 props.handleClose();
                 
               }}
         >
-            <Categories id={newId}  type={props.type}/>
-             
-            <TextField 
-                id="standard-number-required"
-                value={values.amount}
-                onChange={handleChange('amount')} 
-                label={(props.type==="inc") && "Add Income" }
-                required
-                fullWidth
-            />
+            <Categories  id={id} type={type}/>
+            <div className={classes.margin}>
+              <Grid container spacing={1} alignItems="flex-end">
+                <Grid item>
+                  {pickedIcon && <pickedIcon.icon/>}
+                </Grid>
+                <Grid item>
+                  <TextField 
+                    id="standard-number-required"
+                    value={values.amount}
+                    onChange={handleChange('amount')} 
+                    label={(props.type==="inc") && "Add Income" }
+                    required
+                    fullWidth
+                  />
+                </Grid>
+              </Grid>
+            </div>
+              
+              
             <TextField 
                 id="standard-basic"
                 value={values.note}
@@ -88,7 +105,7 @@ function AccountForm(props){
                 type="submit">
                 <DoneIcon />
             </Fab>
-        </form>
+      </form>
     )
 }
 export default AccountForm;

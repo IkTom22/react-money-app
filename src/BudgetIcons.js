@@ -16,7 +16,7 @@ const BudgetIcons = {
     
     incs:[
         {icon: MonetizationOnOutlinedIcon , title: "allowance", iconName: "MonetizationOnOutlinedIcon"},
-        {icon: CardGiftcardOutlinedIcon  , title: "gift"},
+        {icon: CardGiftcardOutlinedIcon  , title: "gift" },
         {icon: BrightnessAutoOutlinedIcon , title: "award"},
         {icon: SportsOutlinedIcon,   title: "umpire"},
         {icon: PanToolOutlinedIcon, title: "extra choires"},

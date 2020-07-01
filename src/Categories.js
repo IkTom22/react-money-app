@@ -2,7 +2,6 @@ import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import { v4 as uuidv4 } from 'uuid';
 
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -20,6 +19,7 @@ import BudgetIcons from './BudgetIcons';
 import { textAlign } from '@material-ui/system';
 import useInputState from './hooks/useInputState';
 import {DispatchIncsContext} from './contexts/inc/incItems.context';
+import {incItemsContext} from './contexts/inc/incItems.context';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -66,9 +66,9 @@ function Categories(props){
     const {accounts, incs, exps, savings} = BudgetIcons;
     const [values, handleChange] = useInputState("");
     const dispatchIncs = useContext(DispatchIncsContext);
-    const {type, category, id} = props;
+    const {type,  id} = props;
     const classes = useStyles();
-
+    
     
     
         if(type==="inc"){
@@ -86,11 +86,11 @@ function Categories(props){
      
                                     dispatchIncs({
                                         type: "ADD_TYPE",
-                                        iconName: inc.iconName,
+                                        icon: inc.icon,
                                         title: inc.title, 
                                         id: id
                                         })
-                                    console.log(values.iconName)
+                                    
                                 }}
                                 
                             >
