@@ -22,6 +22,7 @@ import {DispatchIncsContext} from './contexts/inc/incItems.context';
 import {incItemsContext} from './contexts/inc/incItems.context';
 
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -41,34 +42,35 @@ const useStyles = makeStyles((theme) => ({
     },
     categoryButtons: {
         padding: "5px 5px 0 5px",
-        '& > *': {
-            fontSize: "medium",
-            
+        width: '60px',
+        height:'60px',
+        color: '#ff8a80',
+        '& > *': {          
             padding: '4px',
             '& >*':{
-                // color: "white",
-                transform: 'scale(1.3)',
-                borderRadius: "50%",
-                padding: "5px"
-               
-            }
-           
-            
+                 padding: "5px"
+            } 
         }
     },
     subTitle:{
         fontSize: "1.2rem"
     }
   }));
+  //let changeColor = (e) => e.button ? {style ={backgroundColor: e.backgroundColor}}:  {style={backgroundColor: 'none'}}
 
- 
 function Categories(props){
     const {accounts, incs, exps, savings} = BudgetIcons;
     const [values, handleChange] = useInputState("");
     const dispatchIncs = useContext(DispatchIncsContext);
+    const incItems = useContext(incItemsContext);
     const {type,  id} = props;
     const classes = useStyles();
     
+
+    
+    let index = incItems.findIndex(e=> e.id === id );
+    let picked = incItems[index]
+    picked && console.log(picked.backgroundColor)
     
     
         if(type==="inc"){
@@ -76,27 +78,27 @@ function Categories(props){
             return(
                 <Grid container justify='center' alignItems='center' >
                     <List className={classes.root} >
-
+                    
                         {incs.map((inc, i)=> (
                         <ListItem className={classes.categoryIcons} key={i} >
                             <IconButton 
-                                values={ values.iconName}
-                                className={classes.categoryButtons}  
-                                onClick={ e=>{
-     
+                                values={ values.icon}
+                                className={classes.categoryButtons}
+                                onClick={ e=>{ 
+                                    
                                     dispatchIncs({
                                         type: "ADD_TYPE",
                                         icon: inc.icon,
                                         title: inc.title, 
-                                        id: id
+                                        id: id,
+                                        backgroundColor: inc.backgroundColor
                                         })
-                                    
                                 }}
                                 
                             >
-                                {<inc.icon   fontSize="large"  key={inc.title}/>}
+                                {<inc.icon  key={inc.title} fontSize= "large"/>}
                             </IconButton>
-                            <ListItemText secondary={inc.title} className={classes.subTitle}/>  
+                            <ListItemText secondary={inc.title} className={classes.subTitle} />  
                         </ListItem>
                         ))}
                     </List>

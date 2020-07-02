@@ -5,7 +5,7 @@ import incItemsReducer from '../../reducer/incItems.reducer';
 
 
 const defaultIncItems = [
-    {id: "", amount: 0, title: "", note: "", icon: {} }
+    {id: "", amount: 0, title: "", note: "", icon: {}, button: false}
 ]
 
 export const incItemsContext = createContext();

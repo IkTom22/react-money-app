@@ -3,7 +3,7 @@
 const balanceReducer = (state, action)=>{
  switch(action.type){
     case "Edit_BALANCE":
-         return {...state, mainAccount: action.mainAccount}
+         return {...state, mainAccount: parseFloat(action.mainAccount)}
     case "ADD_INC":
         return {
                 ...state, 

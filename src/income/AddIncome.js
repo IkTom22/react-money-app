@@ -44,8 +44,12 @@ function AddIncome(){
         
             <Fab 
                 aria-label="add income" 
-                color="secondary" 
-                style={{marginTop: "2rem"}} 
+
+                style={{
+                            marginTop: "2rem", 
+                            
+                            backgroundColor: "#ff8a80",
+                        }} 
                 onClick={handleOpen}
             >
                 <AddIcon />

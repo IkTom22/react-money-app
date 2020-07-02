@@ -20,20 +20,29 @@ const useStyles = makeStyles((theme) => ({
     padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme
       .spacing(3)}px`,
   
-    '& > *': {
-      margin: theme.spacing(2),
-      
+      '& > *': {
+        margin: theme.spacing(2),
+        
+      }
     },
     margin: {
       margin: theme.spacing(1),
     },
- doneIcon: {
+    doneIcon: {
     width: "3rem",
     height: "3rem",
 
-    }
-   
+    },
+
+    picked: {
+      height: '40px',
+      width: '40px',
+      '& > *': {
+        transform: 'scale(1.2)',
+        padding: '4px'
+      }
   },
+
 }));
 
 
@@ -49,8 +58,8 @@ function AccountForm(props){
     const {type, id} = props;
     
     const index = incItems.findIndex(e => e.id === id);
-    const pickedIcon = incItems[index]
-    console.log(pickedIcon)
+    let pickedIcon = incItems[index]
+    pickedIcon && console.log(pickedIcon.backgroundColor)
     return(
         <form
             className={classes.root} 
@@ -70,11 +79,19 @@ function AccountForm(props){
                 
               }}
         >
-            <Categories  id={id} type={type}/>
+            <Categories  id={id} type={type} />
             <div className={classes.margin}>
               <Grid container spacing={1} alignItems="flex-end">
-                <Grid item>
-                  {pickedIcon && <pickedIcon.icon/>}
+                <Grid item className={classes.picked}>
+                  {pickedIcon 
+                    && <pickedIcon.icon 
+                          fontsize='small'
+                          style={{
+                                  backgroundColor: pickedIcon.backgroundColor,
+                                  borderRadius: '50%'
+                                }} 
+                          
+                        />}
                 </Grid>
                 <Grid item>
                   <TextField 

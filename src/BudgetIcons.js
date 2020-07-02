@@ -8,33 +8,32 @@ import BeachAccessOutlinedIcon from '@material-ui/icons/BeachAccessOutlined';
 import LocalGroceryStoreOutlinedIcon from '@material-ui/icons/LocalGroceryStoreOutlined';
 import PanToolOutlinedIcon from '@material-ui/icons/PanToolOutlined';
 import TrainOutlinedIcon from '@material-ui/icons/TrainOutlined';
-import { pink } from '@material-ui/core/colors';
+import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
+
 
 
 const BudgetIcons = {
     accounts: [],
     
     incs:[
-        {icon: MonetizationOnOutlinedIcon , title: "allowance", iconName: "MonetizationOnOutlinedIcon"},
-        {icon: CardGiftcardOutlinedIcon  , title: "gift" },
-        {icon: BrightnessAutoOutlinedIcon , title: "award"},
-        {icon: SportsOutlinedIcon,   title: "umpire"},
-        {icon: PanToolOutlinedIcon, title: "extra choires"},
-        {icon: MonetizationOnOutlinedIcon , title: "allowance" },
-        {icon: CardGiftcardOutlinedIcon  , title: "gift"},
-        {icon: BrightnessAutoOutlinedIcon , title: "award"},
-        {icon: SportsOutlinedIcon  , title: "umpire"},
-        {icon: PanToolOutlinedIcon , title: "extra choires"}
+        {icon: MonetizationOnOutlinedIcon , title: "allowance", backgroundColor: "#ffe082", button: false},
+        {icon: CardGiftcardOutlinedIcon  , title: "gift", backgroundColor: "#f8bbd0", button: false},
+        {icon: BrightnessAutoOutlinedIcon , title: "award", backgroundColor: "#ea80fc", button: false},
+        {icon: SportsOutlinedIcon,   title: "umpire",  backgroundColor: "#18ffff", button: false},
+        {icon: PanToolOutlinedIcon, title: "extra choires", backgroundColor: "#ccff90", button: false},
+        {icon: BubbleChartOutlinedIcon, title: "misc", backgroundColor: "#e1f5fe", button: false},
+
+       
 
     ],
     exps: [
-        {icon: AccountBalanceOutlinedIcon, title:'bank fee' },
-        {icon: LocalGroceryStoreOutlinedIcon, title:'grocery' },
-        {icon: TrainOutlinedIcon, title:'transport' }
+        {icon: AccountBalanceOutlinedIcon, title:'bank fee' , button: false},
+        {icon: LocalGroceryStoreOutlinedIcon, title:'grocery' , button: false},
+        {icon: TrainOutlinedIcon, title:'transport' , button: false}
     ],
     
     savings: [
-        {icon: BeachAccessOutlinedIcon, title: "rainy day"}
+        {icon: BeachAccessOutlinedIcon, title: "rainy day", button: false}
 
     ]
 }

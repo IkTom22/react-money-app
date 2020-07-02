@@ -1,14 +1,13 @@
-import React  from 'react';
-import AddAccountForm from './AddAccountForm';
+import React from 'react';
+import AccountForm from '../AccountForm';
 import Fab from '@material-ui/core/Fab';
-//import {DispatchContext} from '../contexts/accounts.context';
+// import {DispatchContext} from '../contexts/accounts.context';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-
-
-import AccountBalanceWalletTwoToneIcon from '@material-ui/icons/AccountBalanceWalletTwoTone';
+import RemoveIcon from '@material-ui/icons/Remove';
+import { v4 as uuidv4 } from 'uuid';
 // import styles from './styles/AddAccountStyles';
 // import withStyles from '@material-ui/core/withStyles';
 
@@ -24,10 +23,11 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
       
+      
     },
   }));
 
-function AddAccount(){
+function AddExpenses(){
     // const accounts = useContext(DispatchContext);
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
@@ -43,12 +43,12 @@ function AddAccount(){
         <React.Fragment>
         
             <Fab 
-                aria-label="add an wallet" 
+                aria-label="add expenses" 
                 color="secondary" 
-                style={{margin: "2rem 0.5rem 0"}} 
+                style={{marginTop: "2rem"}} 
                 onClick={handleOpen}
             >
-                <AccountBalanceWalletTwoToneIcon />
+                <RemoveIcon />
             </Fab>
             <Modal
                 aria-labelledby="transition-modal-title"
@@ -64,7 +64,7 @@ function AddAccount(){
             >
             <Fade in={open}>
             <div className={classes.paper}>
-                <AddAccountForm  handleClose={handleClose}/>
+                <AccountForm type="exp" id={uuidv4()} handleClose={handleClose}/>
             </div>
             </Fade>
         </Modal>
@@ -73,4 +73,4 @@ function AddAccount(){
     )
 }
 
-export default AddAccount;
+export default AddExpenses;

@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
     
 const EditBalanceForm = memo((props)=>{
-    const [value, handleChange, reset] = useInputState("");
+    const [values, handleChange, reset] = useInputState("");
     const dispatch = useContext(DispatchBalContext);
     const classes = useStyles();
     console.log(typeof(value))
@@ -41,14 +41,17 @@ const EditBalanceForm = memo((props)=>{
             onSubmit={e => {
                 e.preventDefault();
                 //dispatch({type: "Edit_BALANCE", mainAccount: value})
-                dispatch({type: "Edit_BALANCE", mainAccount: parseFloat(value)})
+                dispatch({
+                    type: "Edit_BALANCE", 
+                    mainAccount: values.mainAccount 
+                })
                 reset();
                 props.handleClose();
                 }}
         >
             <TextField 
-                value={value}
-                onChange={handleChange} 
+                value={values.mainAccount}
+                onChange={handleChange('mainAccount')} 
                 label="Edit Balance" 
                 required
                 fullWidth

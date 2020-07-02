@@ -5,9 +5,10 @@ export default initialVal => {
   const [values, setValues] = useState({
     title: '',
     amount: '',
-    iconName: '',
+    icon: '',
     note: '',
-    id: ''
+    id: '',
+    mainAccount:''
  
   });
   // const handleChange = e => {
@@ -23,7 +24,8 @@ export default initialVal => {
       amount: '',
       iconName: '',
       note: '',
-      id: ''
+      id: '',
+      mainAccount:''
    
     });
   };
