@@ -9,8 +9,9 @@ import Fade from '@material-ui/core/Fade';
 
 
 import AccountBalanceWalletTwoToneIcon from '@material-ui/icons/AccountBalanceWalletTwoTone';
-// import styles from './styles/AddAccountStyles';
-// import withStyles from '@material-ui/core/withStyles';
+import cyan from '@material-ui/core/colors/cyan';
+
+const buttonColor = cyan[100]
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -44,8 +45,8 @@ function AddAccount(){
         
             <Fab 
                 aria-label="add an wallet" 
-                color="secondary" 
-                style={{margin: "2rem 0.5rem 0"}} 
+                
+                style={{margin: "2rem 0.5rem 0", backgroundColor: buttonColor}} 
                 onClick={handleOpen}
             >
                 <AccountBalanceWalletTwoToneIcon />

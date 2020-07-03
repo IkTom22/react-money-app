@@ -10,7 +10,9 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import { v4 as uuidv4 } from 'uuid';
 // import styles from './styles/AddAccountStyles';
 // import withStyles from '@material-ui/core/withStyles';
+import cyan from '@material-ui/core/colors/cyan';
 
+const buttonColor = cyan[300];
 const useStyles = makeStyles((theme) => ({
     modal: {
       display: 'flex',
@@ -44,8 +46,8 @@ function AddExpenses(){
         
             <Fab 
                 aria-label="add expenses" 
-                color="secondary" 
-                style={{marginTop: "2rem"}} 
+                
+                style={{marginTop: "2rem", backgroundColor: buttonColor}} 
                 onClick={handleOpen}
             >
                 <RemoveIcon />

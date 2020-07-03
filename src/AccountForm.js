@@ -9,7 +9,9 @@ import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import DoneIcon from '@material-ui/icons/Done';
+import cyan from '@material-ui/core/colors/cyan';
 
+const buttonInc = cyan['A100'];
 
 const useStyles = makeStyles((theme) => ({
   root: {

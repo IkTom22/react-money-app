@@ -7,10 +7,10 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
-
+import cyan from '@material-ui/core/colors/cyan';
 // import styles from './styles/AddAccountStyles';
 // import withStyles from '@material-ui/core/withStyles';
-
+const buttonColor = cyan[100]
 const useStyles = makeStyles((theme) => ({
     modal: {
       display: 'flex',
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
         top: '1rem',
         width: "36px",
         height: "36px",
-        backgroundColor:"pink"
+        backgroundColor: buttonColor
         // backgroundColor: 'pink'
     }
   }));
@@ -53,7 +53,7 @@ function BalanceEdit(){
         
             
             <Fab aria-label="edit balance" className={classes.edit} onClick={handleOpen}>
-                <EditTwoToneIcon color="secondary"/>
+                <EditTwoToneIcon />
             </Fab>
             <Modal
                 aria-labelledby="transition-modal-title"

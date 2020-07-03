@@ -9,16 +9,22 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import amber from '@material-ui/core/colors/amber';
-const moneyPrimary = amber[500];
+import yellow from '@material-ui/core/colors/yellow';
+const moneyPrimary = yellow[400];
 const useStyles = makeStyles((theme) => ({
     
     root: {
       flexGrow: 1,
-      backgroundColor: moneyPrimary
+      backgroundColor: moneyPrimary,
+      boxShadow: 'none',
+      paddingTop: '0.5rem',
+      '& >*': {
+        color: 'black'
+      }
     },
     menuButton: {
       marginRight: theme.spacing(2),
+      
     },
     title: {
       flexGrow: 1,

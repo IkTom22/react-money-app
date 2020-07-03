@@ -1,16 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import AddAccount from './accounts/AddAccount';
 import AddIncome from './income/AddIncome';
 import Grid from '@material-ui/core/Grid'
 import {withStyles} from '@material-ui/core/styles';
 import AddExpenses from './expense/AddExpenses';
+import {AccountsContext} from './contexts/accounts.context'
 
 function ActionButtonHoler(){
+    const accounts = useContext(AccountsContext);
+    console.log(accounts)
     return(
         <Grid container  justify="center" wrap='nowrap'>
-            <AddIncome />
+            {accounts && <AddIncome />}
             <AddAccount />
-            <AddExpenses />
+            {accounts && <AddExpenses />}
         </Grid>
     )
 }

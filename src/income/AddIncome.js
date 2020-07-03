@@ -10,7 +10,9 @@ import AddIcon from '@material-ui/icons/Add';
 import { v4 as uuidv4 } from 'uuid';
 // import styles from './styles/AddAccountStyles';
 // import withStyles from '@material-ui/core/withStyles';
+import cyan from '@material-ui/core/colors/cyan';
 
+const buttonColor = cyan['A100'];
 const useStyles = makeStyles((theme) => ({
     modal: {
       display: 'flex',
@@ -47,8 +49,7 @@ function AddIncome(){
 
                 style={{
                             marginTop: "2rem", 
-                            
-                            backgroundColor: "#ff8a80",
+                            backgroundColor: buttonColor,
                         }} 
                 onClick={handleOpen}
             >

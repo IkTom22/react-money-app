@@ -20,6 +20,9 @@ import { textAlign } from '@material-ui/system';
 import useInputState from './hooks/useInputState';
 import {DispatchIncsContext} from './contexts/inc/incItems.context';
 import {incItemsContext} from './contexts/inc/incItems.context';
+import cyan from '@material-ui/core/colors/cyan';
+
+const buttonInc = cyan['A700'];
 
 
 
@@ -34,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
       width: '80px',
     //   height: '70px',
       display: 'flex',
+     
       flexDirection: 'column',
       textAlign: 'center'
     },
@@ -44,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
         padding: "5px 5px 0 5px",
         width: '60px',
         height:'60px',
-        color: '#ff8a80',
+        // color: '#ff8a80', 
+        color: buttonInc,
         '& > *': {          
             padding: '4px',
             '& >*':{
