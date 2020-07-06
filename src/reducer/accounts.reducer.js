@@ -9,7 +9,7 @@ const accountReducer = (state, action)=>{
         case "EDIT":
             return state.map(account => 
                 account.id === action.id ? {...account, total: action.newAmount} : account) 
-                   
+        case "" :       
         default: 
             return state        
     }

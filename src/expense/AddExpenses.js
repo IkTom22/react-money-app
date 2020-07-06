@@ -13,6 +13,7 @@ import { v4 as uuidv4 } from 'uuid';
 import cyan from '@material-ui/core/colors/cyan';
 
 const buttonColor = cyan[300];
+
 const useStyles = makeStyles((theme) => ({
     modal: {
       display: 'flex',

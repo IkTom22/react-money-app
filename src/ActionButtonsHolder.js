@@ -11,9 +11,9 @@ function ActionButtonHoler(){
     console.log(accounts)
     return(
         <Grid container  justify="center" wrap='nowrap'>
-            {accounts && <AddIncome />}
+             <AddIncome />
             <AddAccount />
-            {accounts && <AddExpenses />}
+            <AddExpenses />
         </Grid>
     )
 }

@@ -3,10 +3,13 @@ import useInputState from'./hooks/useInputState';
 import Categories from './Categories';
 import {DispatchBalContext} from './contexts/balance.context';
 import {DispatchIncsContext, incItemsContext} from './contexts/inc/incItems.context';
+import { DispatchExpsContext, expItemsContext} from './contexts/exp/expItems.context';
+import { AccountsContext } from './contexts/accounts.context';
 import { makeStyles } from '@material-ui/core/styles';
 import BudgetIcons from './BudgetIcons';
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import Fab from '@material-ui/core/Fab';
 import DoneIcon from '@material-ui/icons/Done';
 import cyan from '@material-ui/core/colors/cyan';
@@ -55,10 +58,21 @@ function AccountForm(props){
     const dispatch = useContext(DispatchBalContext);
     const dispatchIncs = useContext(DispatchIncsContext);
     const incItems = useContext(incItemsContext);
+    const expItems = useContext(expItemsContext);
+    const dispatchExps = useContext(DispatchExpsContext);
+
+    const accounts = useContext(AccountsContext);
+    const accountNames = accounts.map(a=> a.name);
+    
     const classes = useStyles();
     const {incs, exps} = BudgetIcons; 
     const {type, id} = props;
     
+    
+    const [value, setValue] = React.useState(accountNames[0]);
+
+    const [inputValue, setInputValue] = React.useState('');
+    const accountId = accounts.filter((a) => a.name === inputValue && a.id );
     const index = incItems.findIndex(e => e.id === id);
     let pickedIcon = incItems[index]
     pickedIcon && console.log(pickedIcon.backgroundColor)
@@ -76,12 +90,39 @@ function AccountForm(props){
                     })
                     
                   dispatch({type: "ADD_INC", inc: values.amount}) 
-                
+                if(type ==="exp")
+                  dispatchExps({
+                    type: "ADD_DETAILS", 
+                    accountId: accountId,
+                    id: id,
+                    amount: values.amount,  
+                    note: values.note 
+                  })
+                  
                 props.handleClose();
                 
               }}
         >
             <Categories  id={id} type={type} />
+            {type==="exp" 
+              &&  <div>
+                      <br />
+                      <Autocomplete
+                        value={value}
+                        onChange={(event, newValue) => {
+                          setValue(newValue);
+                        }}
+                        inputValue={inputValue}
+                        onInputChange={(event, newInputValue) => {
+                          setInputValue(newInputValue);
+                        }}
+                        id="controllable-states-demo"
+                        options={accountNames}
+                        style={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Choose an account" variant="outlined" />}
+                      />
+                </div>
+              }
             <div className={classes.margin}>
               <Grid container spacing={1} alignItems="flex-end">
                 <Grid item className={classes.picked}>
@@ -100,7 +141,7 @@ function AccountForm(props){
                     id="standard-number-required"
                     value={values.amount}
                     onChange={handleChange('amount')} 
-                    label={(props.type==="inc") && "Add Income" }
+                    label={(props.type==="inc") ? "Add Income" : "Add Expense"}
                     required
                     fullWidth
                   />

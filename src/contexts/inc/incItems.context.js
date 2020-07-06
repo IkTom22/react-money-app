@@ -1,6 +1,6 @@
 import React, {createContext} from 'react';
 import {useLocalStorageReducer} from '../../hooks/useLocalStorageReducer';
-import incItemsReducer from '../../reducer/incItems.reducer';
+import accountItemsReducer from '../../reducer/accountItems.reducer';
 
 
 
@@ -14,7 +14,7 @@ export const DispatchIncsContext = createContext();
 
 
 export function IncItemsProvider(props) {
-    const [incItems, dispatchIncs] = useLocalStorageReducer("incItems", defaultIncItems, incItemsReducer);
+    const [incItems, dispatchIncs] = useLocalStorageReducer("incItems", defaultIncItems, accountItemsReducer);
     
     return(
         <incItemsContext.Provider value={incItems}>

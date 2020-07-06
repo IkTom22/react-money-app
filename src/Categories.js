@@ -110,18 +110,37 @@ function Categories(props){
                 </Grid>
             ) }
            else if(type==="exp"){
-                return(
-                    <List>
-                        {incs.map((exp, i)=> (
-                        <React.Fragment key ={i}>
-                            <Avatar>
-                            {exp.icon}    
-                            </Avatar>
-                            <ListItemText   secondary={exp.title} />  
-                        </React.Fragment>
-                        ))}
-                </List>
-                ) }
+
+            return(
+            <Grid container justify='center' alignItems='center' >
+            <List className={classes.root} >
+            
+                {exps.map((exp, i)=> (
+                <ListItem className={classes.categoryIcons} key={i} >
+                    <IconButton 
+                        values={ values.icon}
+                        className={classes.categoryButtons}
+                        onClick={ e=>{ 
+                            
+                            dispatchIncs({
+                                type: "ADD_TYPE",
+                                icon: exp.icon,
+                                title: exp.title, 
+                                id: id,
+                                backgroundColor: exp.backgroundColor
+                                })
+                        }}
+                        
+                    >
+                        {<exp.icon  key={exp.title} fontSize= "large"/>}
+                    </IconButton>
+                    <ListItemText secondary={exp.title} className={classes.subTitle} />  
+                </ListItem>
+                ))}
+            </List>
+        </Grid>
+            )
+                    }
             else if (type ==="savings"){
                 return(
                     <List>

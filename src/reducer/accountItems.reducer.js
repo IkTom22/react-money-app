@@ -1,7 +1,7 @@
 
 
 
-const incItemsReducer = (state, action)=>{
+const accountItemsReducer = (state, action)=>{
     console.log(state)
     const index = state.findIndex(e=> e.id === action.id )
     switch(action.type){
@@ -20,6 +20,7 @@ const incItemsReducer = (state, action)=>{
                         : [...state,
                                 {
                                     id: action.id, 
+                                    accountId: action.accountId,
                                     title: action.title,
                                     icon: action.icon,
                                     backgroundColor: action.backgroundColor,
@@ -28,12 +29,12 @@ const incItemsReducer = (state, action)=>{
                         ] 
               
         case "ADD_DETAILS":     
-            return  state.map(incItem => 
-                incItem.id === action.id ? {...incItem, amount: parseFloat(action.amount), note: action.note } : incItem) 
+            return  state.map(e => 
+                e.id === action.id ? {...e, amount: parseFloat(action.amount), note: action.note } : e) 
         
         case "TOGGLE_BUTTON" :
-            return  state.map(incItem =>
-                incItem.id === action.id ? { ...incItem, button: !incItem.button} : incItem
+            return  state.map(e =>
+                e.id === action.id ? { ...e, button: !e.button} : e
                 )      
         default:
             return state
@@ -42,4 +43,4 @@ const incItemsReducer = (state, action)=>{
    
     }
 }
-export default incItemsReducer;
+export default accountItemsReducer;

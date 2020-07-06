@@ -1,18 +1,15 @@
 import React, {createContext} from 'react';
 import accountReducer from '../reducer/accounts.reducer';
 import {useLocalStorageReducer} from '../hooks/useLocalStorageReducer';
-import {BalanceContext} from './balance.context';
 import { v4 as uuidv4 } from 'uuid';
 const defaultAccounts = [
-    
-    // {id: 2, name: "Spending Account", total: 200},
-    // {id: 3, name: "Father's day", total: 50},
-    // {id: 4, name: "Xmas saving", total: 70},
+
     {
         id: uuidv4(),
         name: "Main Account",
         funds: 0,
         exp: 0
+
     }
 
 ];

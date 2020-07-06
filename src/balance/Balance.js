@@ -21,7 +21,7 @@ function Balance(props){
             alignItems="center"
         >
             <div className={classes.subTitle}>
-                Main Account   
+                Total Balance  
             </div>
             
             <div className={classes.title} >   

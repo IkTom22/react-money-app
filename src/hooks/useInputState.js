@@ -8,6 +8,7 @@ export default initialVal => {
     icon: '',
     note: '',
     id: '',
+    accountId: "", 
     mainAccount:''
  
   });
