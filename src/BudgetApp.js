@@ -7,6 +7,7 @@ import ActionButtonHoler from './ActionButtonsHolder';
 import AccountList from './accounts/AccountList';
 import {AccountsProvider} from './contexts/accounts.context';
 import {BalanceProvider} from './contexts/balance.context';
+import {ExpItemsProvider} from './contexts/exp/expItems.context';
 import {IncItemsProvider} from './contexts/inc/incItems.context';
 import {makeStyles} from "@material-ui/core/styles";
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -24,6 +25,7 @@ const useStyles= makeStyles((theme) => ({
   },
   grid: {
     gap: theme.spacing(2),
+    backgroundColor: moneyPrimary,
     
     
   }
@@ -41,9 +43,11 @@ function BugdetApp (props){
               <BalanceProvider>
                 <IncItemsProvider>
                   <AccountsProvider>
+                    <ExpItemsProvider>
                     <BalancePage />
                     <ActionButtonHoler />
                     <AccountList />
+                    </ExpItemsProvider>
                   </AccountsProvider>
                 </IncItemsProvider>
               </BalanceProvider>

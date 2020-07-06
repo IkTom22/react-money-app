@@ -1,8 +1,10 @@
 import React, {useContext} from 'react';
 import useInputState from'../hooks/useInputState';
-import {DispatchContext} from '../contexts/accounts.context';
+import {AccountsContext, DispatchContext} from '../contexts/accounts.context';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { v4 as uuidv4 } from 'uuid';
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import DoneIcon from '@material-ui/icons/Done';
@@ -33,9 +35,15 @@ const useStyles = makeStyles((theme) => ({
 function AddAccountForm(props){
     const [values, handleChange, reset] = useInputState("");
     const dispatch = useContext(DispatchContext);
+    const accounts = useContext(AccountsContext);
     const classes = useStyles();
+    ValidatorForm.addValidationRule('isAccounteNameUnique', value => 
+    accounts.every(
+    ({name}) => name !== value
+    )
+  );
     return(
-        <form 
+        <ValidatorForm
             className={classes.root} 
             onSubmit={e => {
                 e.preventDefault();
@@ -44,13 +52,15 @@ function AddAccountForm(props){
                 props.handleClose();
               }}
         >
-            <TextField 
+            <TextValidator
                 id="standard-required"
                 value={values.name}
                 onChange={handleChange('name')} 
                 label="Account Name" 
                 required
                 fullWidth
+                validators={["required", "isAccounteNameUnique"]}
+                errorMessages={["Enter Account Name", "Name already used"]}
             />
             <Fab 
                 size="small" 
@@ -60,7 +70,7 @@ function AddAccountForm(props){
                 type="submit">
                 <DoneIcon />
             </Fab>
-        </form>
+        </ValidatorForm>
     )
 }
 export default AddAccountForm;

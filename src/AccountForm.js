@@ -63,7 +63,7 @@ function AccountForm(props){
 
     const accounts = useContext(AccountsContext);
     const accountNames = accounts.map(a=> a.name);
-    
+
     const classes = useStyles();
     const {incs, exps} = BudgetIcons; 
     const {type, id} = props;
@@ -81,7 +81,7 @@ function AccountForm(props){
             className={classes.root} 
             onSubmit={e => {
                 e.preventDefault();
-                if(type==="inc")
+                if(type==="inc") {
                   dispatchIncs({
                       type: "ADD_DETAILS", 
                       id: id,
@@ -90,15 +90,16 @@ function AccountForm(props){
                     })
                     
                   dispatch({type: "ADD_INC", inc: values.amount}) 
-                if(type ==="exp")
+                } else if(type ==="exp") {
                   dispatchExps({
-                    type: "ADD_DETAILS", 
+                    type: "ADD_EXP_DETAILS", 
                     accountId: accountId,
                     id: id,
                     amount: values.amount,  
                     note: values.note 
                   })
-                  
+                  dispatch({type: "MINUS_EXP", exp: values.amount})
+                }
                 props.handleClose();
                 
               }}

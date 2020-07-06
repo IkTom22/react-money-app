@@ -31,7 +31,9 @@ const accountItemsReducer = (state, action)=>{
         case "ADD_DETAILS":     
             return  state.map(e => 
                 e.id === action.id ? {...e, amount: parseFloat(action.amount), note: action.note } : e) 
-        
+        case "ADD_EXP_DETAILS":  
+            return  state.map(e => 
+                e.id === action.id ? {...e, accountId:action.id, id: action.id,  amount: parseFloat(action.amount), note: action.note } : e)   
         case "TOGGLE_BUTTON" :
             return  state.map(e =>
                 e.id === action.id ? { ...e, button: !e.button} : e
