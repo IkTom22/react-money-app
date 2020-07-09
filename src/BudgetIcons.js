@@ -9,7 +9,17 @@ import LocalGroceryStoreOutlinedIcon from '@material-ui/icons/LocalGroceryStoreO
 import PanToolOutlinedIcon from '@material-ui/icons/PanToolOutlined';
 import TrainOutlinedIcon from '@material-ui/icons/TrainOutlined';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
-
+import EmojiFoodBeverageOutlinedIcon from '@material-ui/icons/EmojiFoodBeverageOutlined';
+import LocalCafeOutlinedIcon from '@material-ui/icons/LocalCafeOutlined';
+import MusicVideoOutlinedIcon from '@material-ui/icons/MusicVideoOutlined';
+import QueueMusicOutlinedIcon from '@material-ui/icons/QueueMusicOutlined';
+import RestaurantOutlinedIcon from '@material-ui/icons/RestaurantOutlined';
+import PrintOutlinedIcon from '@material-ui/icons/PrintOutlined';
+import CakeOutlinedIcon from '@material-ui/icons/CakeOutlined';
+import FlightOutlinedIcon from '@material-ui/icons/FlightOutlined';
+import LoyaltyOutlinedIcon from '@material-ui/icons/LoyaltyOutlined';
+import FastfoodIcon from '@material-ui/icons/Fastfood';
+import DevicesOtherOutlinedIcon from '@material-ui/icons/DevicesOtherOutlined';
 
 
 const BudgetIcons = {
@@ -27,9 +37,19 @@ const BudgetIcons = {
 
     ],
     exps: [
-        {icon: AccountBalanceOutlinedIcon, title:'bank fee' , button: false},
+        {icon: AccountBalanceOutlinedIcon, title:'bank fee', button: false},
         {icon: LocalGroceryStoreOutlinedIcon, title:'grocery' , button: false},
-        {icon: TrainOutlinedIcon, title:'transport' , button: false}
+        {icon: TrainOutlinedIcon, title:'transportation', button: false},
+        {icon: FlightOutlinedIcon, title:'travel', button: false},
+        {icon: LoyaltyOutlinedIcon, title:'clothing', button: false},
+        {icon: FastfoodIcon, title:'fast food', button: false},
+        {icon: DevicesOtherOutlinedIcon , title:'Electronics', button: false},
+        {icon: CakeOutlinedIcon , title:'gift', button: false},
+        {icon: PrintOutlinedIcon , title:'printing', button: false},
+        {icon: RestaurantOutlinedIcon , title:'lunch', button: false},
+        {icon: QueueMusicOutlinedIcon  , title:'music', button: false},
+        {icon: LocalCafeOutlinedIcon  , title:'cafe', button: false}
+
     ],
     
     savings: [
