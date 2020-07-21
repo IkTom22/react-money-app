@@ -36,7 +36,7 @@ function DashboardLists(props){
                         ? incItems.map((incItem, i) => (
                         <React.Fragment key={i}>
                         {incItem.id &&
-                            <Grid items style={{width: "100%"}}>
+                            <Grid items style={{width: "100%", marginTop: "1rem"}}>
                             <Paper>
                             <List>
                                  <DashboardList {...incItem} key={incItem.id} type={type}/>
@@ -49,8 +49,8 @@ function DashboardLists(props){
                     )) : expAmount.map((exp, i) => (
                         <React.Fragment key={i}>
                          {exp.amount !==0 &&
-                            <Grid items style={{width: "100%"}}>
-                            <Paper style={{marginTop: "1rem"}}>
+                            <Grid items style={{width: "100%", marginTop: "1rem"}}>
+                            <Paper >
                                 <List>
                                      <DashboardList {...exp} key={i} type={type}/>
                                 </List>       

@@ -13,13 +13,16 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
+import red from '@material-ui/core/colors/red';
+import deepPurple from '@material-ui/core/colors/deepPurple';
+
+//const buttonInc = cyan['A700'];
+const pageInc = deepPurple['A700'];
+const pageExp = red['A400'];
 
 const useStyles= makeStyles((theme) => ({
     root: {
-      height: "auto",
-    //   backgroundColor: moneyPrimary,
-      height: '100vh'
-      
+        height: '100vh'
     },
     grid: {
       gap: theme.spacing(2),
@@ -56,8 +59,8 @@ function DashboardDialogs(props){
  
 
      return (
-        <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
-            <Grid container justify='center' direction="column" alignItems="center">
+        <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} classes={classes.root} style={{height: '100vh', overflow: 'auto', backgroundColor: type==='inc' ? pageInc: pageExp}}>
+            <Grid container  direction="column" alignItems="center" style={{height: '100vh', overflow: 'auto', backgroundColor: type==='inc' ? pageInc: pageExp}}>
        
                 <Paper elevation={3} style={{ marginTop: "2rem", width: "90%"}}>
                     <Grid 
