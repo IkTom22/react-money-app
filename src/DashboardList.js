@@ -23,11 +23,13 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(4, 0, 2),
     },
     picked: {
-        height: '40px',
-        width: '40px',
+        height: '50px',
+        width: '50px',
+        
         '& > *': {
           transform: 'scale(1.2)',
-          padding: '4px'
+          padding: '4px',
+          
         }
     },
   }));
@@ -43,8 +45,14 @@ function generate(element) {
 function DashboardList(props){
     const classes = useStyles();
     const {amount, title, type} = props;
-  console.log(title)
+    const {incs, exps} = BudgetIcons;
+    const indexIncIcon = incs.findIndex(e => e.title === title);
+    const indexExpIcon = exps.findIndex(e => e.title === title);
+    let pickedIncIcon = incs[indexIncIcon];
+    let pickedExpIcon = exps[indexExpIcon];
+
     //const [dense, setDense] = React.useState(false);
+    
     // const [secondary, setSecondary] = React.useState(false);
     // icon && console.log(icon);
 
@@ -52,19 +60,27 @@ function DashboardList(props){
         
             <ListItem>
            
-                <IconButton>
-                    
-                    <div
-                        style={{
-                            fontsize:'small',
-                            backgroundColor: 'pink',
-                            borderRadius: '50%',
-                            color: 'black'
-                        }} 
-                    />
-                  
-                
-                    
+                <IconButton className={classes.picked}>
+                    {type ==="exp" &&
+                      <pickedExpIcon.icon
+                          style={{
+                              fontsize:'small',
+                              backgroundColor: pickedExpIcon.backgroundColor,
+                              borderRadius: '50%',
+                              color: 'white',
+                              marginRight: '1rem'
+                          }} 
+                    />}
+                    {type==="inc" &&
+                      <pickedIncIcon.icon
+                          style={{
+                              fontsize:'small',
+                              backgroundColor: pickedIncIcon.backgroundColor,
+                              borderRadius: '50%',
+                              color: 'black',
+                              marginRight: '1rem'
+                          }} 
+                      />}  
                     </IconButton>    
             
              
@@ -73,8 +89,8 @@ function DashboardList(props){
                   
                 />
                 <ListItem>
-                  <IconButton edge="end" aria-label="amount">
-                    {amount}
+                  <IconButton style={{marginLeft: 'auto'}} aria-label="amount" >
+                    <div style={{fontSize: '1.2rem'}}>$ {amount}</div>
                   </IconButton>
                 </ListItem>
               </ListItem>

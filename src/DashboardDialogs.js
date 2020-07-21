@@ -80,7 +80,7 @@ function DashboardDialogs(props){
                         </List>
                     </Grid>
                 </Paper>
-                <Grid container style={{ marginTop: "1.5rem", width: "90%"}}>
+                <Grid container style={{ marginTop: "1.5rem", width: "90%" }} >
                     
                         <DashboardLists type={type}/>
                    

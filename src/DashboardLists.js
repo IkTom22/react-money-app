@@ -25,36 +25,41 @@ function DashboardLists(props){
     // })
     let expAmount = sumAmount(expCategories, expGroupedByTitle);
     console.log(expAmount)
-
+    
 
 
     if(expItems.length || incItems.length)
     return ( 
-        <Grid container justify="space-around" direction="row">
-            <Grid item xs={6} >
-                    { type === "inc" 
+        
+            
+                     type === "inc" 
                         ? incItems.map((incItem, i) => (
                         <React.Fragment key={i}>
                         {incItem.id &&
+                            <Grid items style={{width: "100%"}}>
                             <Paper>
                             <List>
-                                 <DashboardList {...incItem} key={incItem.id}/>
+                                 <DashboardList {...incItem} key={incItem.id} type={type}/>
                             </List>
                                 
                             </Paper>
+                            </Grid>
                         }
                         </React.Fragment>
                     )) : expAmount.map((exp, i) => (
                         <React.Fragment key={i}>
                          {exp.amount !==0 &&
-                            <Paper style={{width:"90%" ,marginTop: "1rem"}}>
+                            <Grid items style={{width: "100%"}}>
+                            <Paper style={{marginTop: "1rem"}}>
                                 <List>
                                      <DashboardList {...exp} key={i} type={type}/>
                                 </List>       
-                            </Paper>}
-                        </React.Fragment> ))}
-            </Grid>
-        </Grid>
+                            </Paper>
+                            </Grid>
+                        }
+                        </React.Fragment> ))
+           
+      
         
     )
 

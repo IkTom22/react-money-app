@@ -60,7 +60,7 @@ const BudgetIcons = {
         {icon: LoyaltyOutlinedIcon, title:'clothing', backgroundColor: red['A400'], button: false},
         {icon: FastfoodIcon, title:'fast food', backgroundColor: deepOrange['A400'], button: false},
         {icon: DevicesOtherOutlinedIcon , title:'Electronics', backgroundColor: indigo[900], button: false},
-        {icon: CakeOutlinedIcon , title:'gift', backgroundColor: yellow['A700'], button: false},
+        {icon: CakeOutlinedIcon , title:'presents', backgroundColor: yellow['A700'], button: false},
         {icon: PrintOutlinedIcon , title:'printing', backgroundColor: cyan[900], button: false},
         {icon: RestaurantOutlinedIcon , title:'lunch', backgroundColor: orange[900],button: false},
         {icon: QueueMusicOutlinedIcon  , title:'music', backgroundColor: cyan[700], button: false},
