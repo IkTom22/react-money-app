@@ -4,10 +4,16 @@ export default{
         fontSize:"1.5rem",
         fontWeight: 400
     },
-    subTitle:{fontSize:"1rem"},
+    subTitle:{
+        fontSize:"1rem",
+        color: 'black'
+    },
     details:{
-        padding: 0
+        padding: 0,
+        '& a':{
+            textDecoration: "none"
+            },
+        }
     }
 
 
-}

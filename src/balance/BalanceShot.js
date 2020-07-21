@@ -18,7 +18,7 @@ function BalanceShot(props){
                     flexItem
                     style={{backgroundColor: "rgba(0,0,0, 0.3)"}}
                 />
-                <ExpTotal />
+                <ExpTotal type="exp"/>
                 
             </Grid>
     )

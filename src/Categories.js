@@ -20,10 +20,14 @@ import { textAlign } from '@material-ui/system';
 import useInputState from './hooks/useInputState';
 import {DispatchIncsContext} from './contexts/inc/incItems.context';
 import {incItemsContext} from './contexts/inc/incItems.context';
+import {expItemsContext} from './contexts/exp/expItems.context';
+import {DispatchExpsContext} from './contexts/exp/expItems.context';
 import cyan from '@material-ui/core/colors/cyan';
+import red from '@material-ui/core/colors/red';
+import deepPurple from '@material-ui/core/colors/deepPurple';
 
-const buttonInc = cyan['A700'];
-
+const buttonInc = deepPurple['A200'];
+const buttonExp = red['A400'];
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,12 +36,14 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'wrap',
         width: '100%',
         justifyContent: 'space-around'
+        
     },
     categoryIcons: {
       width: '80px',
     //   height: '70px',
       display: 'flex',
-     
+      paddingLeft: '12px',
+      paddingRight: '12px', 
       flexDirection: 'column',
       textAlign: 'center'
     },
@@ -51,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
         // color: '#ff8a80', 
         color: buttonInc,
         '& > *': {          
-            padding: '4px',
+            // padding: '4px',
             '& >*':{
                  padding: "5px"
             } 
@@ -67,21 +73,24 @@ function Categories(props){
     const {accounts, incs, exps, savings} = BudgetIcons;
     const [values, handleChange] = useInputState("");
     const dispatchIncs = useContext(DispatchIncsContext);
+    const dispatchExps = useContext(DispatchExpsContext);
     const incItems = useContext(incItemsContext);
+    const expItems = useContext(expItemsContext);
     const {type,  id} = props;
     const classes = useStyles();
     
-
     
-    let index = incItems.findIndex(e=> e.id === id );
-    let picked = incItems[index]
-    picked && console.log(picked.backgroundColor)
+    // let index = incItems.findIndex(e=> e.id === id );
+    // let picked = incItems[index]
+    // let pickedExp = expItems[index]
+    // picked && console.log(picked.backgroundColor)
     
     
         if(type==="inc"){
             
             return(
-                <Grid container justify='center' alignItems='center' >
+                <Grid container justify='center' alignItems='center' style={{paddingBottom: 0, marginBottom: 0
+                }}>
                     <List className={classes.root} >
                     
                         {incs.map((inc, i)=> (
@@ -89,6 +98,7 @@ function Categories(props){
                             <IconButton 
                                 values={ values.icon}
                                 className={classes.categoryButtons}
+                                
                                 onClick={ e=>{ 
                                     
                                     dispatchIncs({
@@ -120,9 +130,10 @@ function Categories(props){
                     <IconButton 
                         values={ values.icon}
                         className={classes.categoryButtons}
+                        style={{color: buttonExp}}
                         onClick={ e=>{ 
                             
-                            dispatchIncs({
+                            dispatchExps({
                                 type: "ADD_TYPE",
                                 icon: exp.icon,
                                 title: exp.title, 

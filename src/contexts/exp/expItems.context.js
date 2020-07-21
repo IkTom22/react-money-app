@@ -1,6 +1,6 @@
 import React, {createContext} from 'react';
 import {useLocalStorageReducer} from '../../hooks/useLocalStorageReducer';
-import accountItemsReducer from '../../reducer/accountItems.reducer';
+import expItemsReducer from '../../reducer/expItems.reducer';
 
 
 
@@ -22,7 +22,7 @@ export const DispatchExpsContext = createContext();
 
 
 export function ExpItemsProvider(props) {
-    const [expItems, dispatchExps] = useLocalStorageReducer("expItems", defaultExpItems, accountItemsReducer);
+    const [expItems, dispatchExps] = useLocalStorageReducer("expItems", defaultExpItems, expItemsReducer);
     
     return(
         <expItemsContext.Provider value={expItems}>

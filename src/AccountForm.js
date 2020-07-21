@@ -13,8 +13,13 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import Fab from '@material-ui/core/Fab';
 import DoneIcon from '@material-ui/icons/Done';
 import cyan from '@material-ui/core/colors/cyan';
+import red from '@material-ui/core/colors/red';
+import deepPurple from '@material-ui/core/colors/deepPurple';
 
-const buttonInc = cyan['A100'];
+//const buttonInc = cyan['A700'];
+const buttonInc = deepPurple['A700'];
+const buttonExp = red['A200'];
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,8 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
     doneIcon: {
     width: "3rem",
-    height: "3rem",
-
+    height: "3rem"
     },
 
     picked: {
@@ -65,7 +69,7 @@ function AccountForm(props){
     const accountNames = accounts.map(a=> a.name);
 
     const classes = useStyles();
-    const {incs, exps} = BudgetIcons; 
+    //const {incs, exps} = BudgetIcons; 
     const {type, id} = props;
     
     
@@ -73,9 +77,12 @@ function AccountForm(props){
 
     const [inputValue, setInputValue] = React.useState('');
     const accountId = accounts.filter((a) => a.name === inputValue && a.id );
-    const index = incItems.findIndex(e => e.id === id);
-    let pickedIcon = incItems[index]
-    pickedIcon && console.log(pickedIcon.backgroundColor)
+    const indexInc = incItems.findIndex(e => e.id === id);
+    const indexExp= expItems.findIndex(e => e.id === id);
+
+    let pickedIcon = incItems[indexInc];
+    let pickedIconExp = expItems[indexExp]
+    pickedIcon && console.log(pickedIcon.icon)
     return(
         <form
             className={classes.root} 
@@ -132,9 +139,20 @@ function AccountForm(props){
                           fontsize='small'
                           style={{
                                   backgroundColor: pickedIcon.backgroundColor,
-                                  borderRadius: '50%'
+                                  borderRadius: '50%',
+                                  color: 'black'
                                 }} 
                           
+                    />}
+                    {pickedIconExp 
+                      && <pickedIconExp.icon 
+                            fontsize='small'
+                            style={{
+                                    backgroundColor: pickedIconExp.backgroundColor,
+                                    borderRadius: '50%',
+                                    color: 'white'
+                                  }} 
+                            
                         />}
                 </Grid>
                 <Grid item>
@@ -163,7 +181,10 @@ function AccountForm(props){
                 color="secondary" 
                 aria-label="add" 
                 className={classes.doneIcon}
-                type="submit">
+                type="submit"
+                style={{backgroundColor: type==='inc' ? buttonInc : buttonExp }}
+            >
+                
                 <DoneIcon />
             </Fab>
       </form>

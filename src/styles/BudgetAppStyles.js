@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) =>  ({
         marginTop: theme.spacing(2),
         padding: 0,
         margin: 0,
-        height: "100vh",
+        height: auto,
         backgroundColor: "white",
     }
  }));

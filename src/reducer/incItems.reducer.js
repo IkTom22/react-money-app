@@ -1,7 +1,5 @@
 
-
-
-const accountItemsReducer = (state, action)=>{
+const incItemsReducer = (state, action)=>{
     console.log(state)
     const index = state.findIndex(e=> e.id === action.id )
     switch(action.type){
@@ -20,7 +18,6 @@ const accountItemsReducer = (state, action)=>{
                         : [...state,
                                 {
                                     id: action.id, 
-                                    accountId: action.accountId,
                                     title: action.title,
                                     icon: action.icon,
                                     backgroundColor: action.backgroundColor,
@@ -45,4 +42,4 @@ const accountItemsReducer = (state, action)=>{
    
     }
 }
-export default accountItemsReducer;
+export default incItemsReducer;
