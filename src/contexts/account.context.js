@@ -1,5 +1,5 @@
 import React, {createContext} from 'react';
-import accountReducer from '../reducer/accounts.reducer';
+import accountsReducer from '../reducer/accounts.reducer';
 import {useLocalStorageReducer} from '../hooks/useLocalStorageReducer';
 
 
@@ -21,7 +21,7 @@ export const DispatchAccountContext = createContext();
 
 export function AccountProvider(props){
     
-    const [account, dispatch] = useLocalStorageReducer("account",  defaultAccount, accountReducer);
+    const [account, dispatch] = useLocalStorageReducer("account",  defaultAccount, accountsReducer);
    
     return(
       

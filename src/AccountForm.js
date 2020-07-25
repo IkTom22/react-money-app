@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, memo} from 'react';
 import useInputState from'./hooks/useInputState';
 import Categories from './Categories';
 import {DispatchBalContext} from './contexts/balance.context';
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function AccountForm(props){
+const AccountForm = memo((props) => {
     const [values, handleChange] = useInputState("");
     const dispatch = useContext(DispatchBalContext);
     const dispatchIncs = useContext(DispatchIncsContext);
@@ -189,5 +189,5 @@ function AccountForm(props){
             </Fab>
       </form>
     )
-}
+})
 export default AccountForm;

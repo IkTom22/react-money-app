@@ -15,8 +15,9 @@ function DashboardLists(props){
     const incItems = useContext(incItemsContext);
     console.log(incItems)
     let expGroupedByTitle = groupBy(expItems, 'title');
-    let incGroupByTitle = groupBy(incItems, 'title');
+    let incGroupedByTitle = groupBy(incItems, 'title');
     let expCategories = Object.keys(expGroupedByTitle);
+    let incCategories= Object.keys(incGroupedByTitle);
 
     // let amount = expCategories.map(e => {
     //     return  {[e] :expGroupedByTitle[e].reduce((prev, cur)=>{
@@ -25,42 +26,38 @@ function DashboardLists(props){
     // })
     let expAmount = sumAmount(expCategories, expGroupedByTitle);
     console.log(expAmount)
-    
+    let incAmount = sumAmount(incCategories, incGroupedByTitle);  
 
 
     if(expItems.length || incItems.length)
     return ( 
-        
-            
-                     type === "inc" 
-                        ? incItems.map((incItem, i) => (
-                        <React.Fragment key={i}>
-                        {incItem.id &&
-                            <Grid items style={{width: "100%", marginTop: "1rem"}}>
-                            <Paper>
-                            <List>
-                                 <DashboardList {...incItem} key={incItem.id} type={type}/>
-                            </List>
-                                
-                            </Paper>
-                            </Grid>
-                        }
-                        </React.Fragment>
-                    )) : expAmount.map((exp, i) => (
-                        <React.Fragment key={i}>
-                         {exp.amount !==0 &&
-                            <Grid items style={{width: "100%", marginTop: "1rem"}}>
-                            <Paper >
-                                <List>
-                                     <DashboardList {...exp} key={i} type={type}/>
-                                </List>       
-                            </Paper>
-                            </Grid>
-                        }
-                        </React.Fragment> ))
-           
-      
-        
+                type === "inc" 
+                ? incAmount.map((inc, i) => (
+                <React.Fragment key={i}>
+                {inc.amount !==0 &&
+                    <Grid items style={{width: "100%", marginTop: "1rem"}}>
+                    <Paper >
+                        <List>
+                            <DashboardList {...inc} key={inc.id} type={type}/>
+                        </List>
+                        
+                    </Paper>
+                    </Grid>
+                }
+                </React.Fragment>
+            )) : expAmount.map((exp, i) => (
+                <React.Fragment key={i}>
+                    {exp.amount !==0 &&
+                    <Grid items style={{width: "100%", marginTop: "1rem"}}>
+                    <Paper >
+                        <List>
+                                <DashboardList {...exp} key={exp.id} type={type}/>
+                        </List>       
+                    </Paper>
+                    </Grid>
+                }
+                </React.Fragment> ))
+
     )
 
 }

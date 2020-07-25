@@ -58,17 +58,18 @@ function DashboardList(props){
 
     return (
         
-            <ListItem>
+            <ListItem >
            
                 <IconButton className={classes.picked}>
                     {type ==="exp" &&
                       <pickedExpIcon.icon
                           style={{
-                              fontsize:'small',
+                              fontsize:'large',
                               backgroundColor: pickedExpIcon.backgroundColor,
                               borderRadius: '50%',
                               color: 'white',
-                              marginRight: '1rem'
+                              marginRight: '1rem',
+                              padding: '2px'
                           }} 
                     />}
                     {type==="inc" &&
@@ -90,7 +91,7 @@ function DashboardList(props){
                 />
                 <ListItem>
                   <IconButton style={{marginLeft: 'auto'}} aria-label="amount" >
-                    <div style={{fontSize: '1.2rem'}}>$ {amount}</div>
+                    <div style={{fontSize: '1.2rem'}}>{`$ ${amount}`}</div>
                   </IconButton>
                 </ListItem>
               </ListItem>

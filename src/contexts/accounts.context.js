@@ -1,13 +1,14 @@
 import React, {createContext} from 'react';
-import accountReducer from '../reducer/accounts.reducer';
+import accountsReducer from '../reducer/accounts.reducer';
 import {useLocalStorageReducer} from '../hooks/useLocalStorageReducer';
 import { v4 as uuidv4 } from 'uuid';
+    
 const defaultAccounts = [
 
     {
         id: uuidv4(),
-        name: "Main Account",
-        funds: 0,
+        name: "Spending Account",
+        total: 0,
         exp: 0
 
     }
@@ -20,12 +21,12 @@ export const DispatchContext = createContext();
 
 export function AccountsProvider(props){
     
-    const [accounts, dispatch] = useLocalStorageReducer("accounts",  defaultAccounts, accountReducer);
+    const [accounts, dispatchAccounts] = useLocalStorageReducer("accounts",  defaultAccounts, accountsReducer);
    
     return(
       
             <AccountsContext.Provider value={accounts}>
-                <DispatchContext.Provider value={dispatch}>
+                <DispatchContext.Provider value={dispatchAccounts}>
                     {props.children}
                 </DispatchContext.Provider>
             </AccountsContext.Provider>

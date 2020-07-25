@@ -3,17 +3,29 @@
 const balanceReducer = (state, action)=>{
  switch(action.type){
     case "Edit_BALANCE":
-         return {...state, mainAccount: parseFloat(action.mainAccount)}
+        if(state.remaining === 0 && state.mainAccount === 0) {
+            return {...state, mainAccount: parseFloat(action.mainAccount), remaining: parseFloat(action.mainAccount)}
+        } else {
+            return {...state, mainAccount: parseFloat(action.mainAccount), remaining: parseFloat(action.mainAccount + (action.mainAccount-state.mainAccount))}
+        }     
+
     case "ADD_INC":
         return {
                 ...state, 
                 mainAccount: parseFloat(state.mainAccount) + parseFloat(action.inc), 
-                    inc: parseFloat(state.inc) + parseFloat(action.inc)
+                inc: parseFloat(state.inc) + parseFloat(action.inc),
+                remaining: parseFloat(state.remaining) + parseFloat(action.inc)
                     
                 }
     case "MINUS_EXP":
         return {...state, mainAccount: parseFloat(state.mainAccount) - parseFloat(action.exp), exp: parseFloat(state.exp) + parseFloat(action.exp)}
-    default: 
+    
+    case "TRANSFER_OUT":
+        return {...state, remaining: parseFloat(state.remaining) - parseFloat(action.amount)}            
+    
+    case "TRANSFER_IN":
+        return {...state, remaining: parseFloat(state.remaining) + parseFloat(action.amount)}        
+        default: 
         return state
  }
 }

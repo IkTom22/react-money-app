@@ -7,6 +7,7 @@ const defaultBalance = {
     mainAccount: 0,
     inc: 0,
     exp: 0,
+    remaining: 0
     
 }
 

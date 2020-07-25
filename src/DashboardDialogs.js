@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import Dialog from '@material-ui/core/Dialog';
 import DashboardLists from './DashboardLists';
 import {BalanceContext} from './contexts/balance.context';
@@ -9,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
-import IconButton from '@material-ui/core/IconButton';
+import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
@@ -46,8 +47,9 @@ const useStyles= makeStyles((theme) => ({
     
   }))
 
-  const Transition = React.forwardRef(function Transition(props, ref, type) {
-    return <Slide direction= {type ==="exp" ? "right" : "left"} ref={ref} {...props} />;
+  const Transition = React.forwardRef(function Transition(props, ref) {
+    
+    return <Slide direction= "left" ref={ref} {...props} />;
   });
   
 function DashboardDialogs(props){
@@ -56,15 +58,17 @@ function DashboardDialogs(props){
     const balance = useContext(BalanceContext);
     console.log(type)
 
- 
+
 
      return (
-        <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} classes={classes.root} style={{height: '100vh', overflow: 'auto', backgroundColor: type==='inc' ? pageInc: pageExp}}>
+        <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} className={classes.root} style={{height: '100vh', overflow: 'auto', backgroundColor: type==='inc' ? pageInc: pageExp}}>
             <Grid container  direction="column" alignItems="center" style={{height: '100vh', overflow: 'auto', backgroundColor: type==='inc' ? pageInc: pageExp}}>
-       
-                <Paper elevation={3} style={{ marginTop: "2rem", width: "90%"}}>
+                <IconButton onClick={handleClose} color="white" aria-label="go back" style={{position: 'fixed', right: '1rem', top: '3.5rem', color: 'white'}}>
+                    <ExitToAppTwoToneIcon />
+                </IconButton> 
+                <Paper elevation={3} style={{ marginTop: "3rem", width: "50%", padding: '0.5rem 0'}}>
                     <Grid 
-                            style={{ textAlign: "center", marginTop:"1rem"}} 
+                            style={{ textAlign: "center"}} 
                             container 
                             direction="column" 
                             spacing={2} 
@@ -72,9 +76,10 @@ function DashboardDialogs(props){
                             justify="center" 
                             alignItems="center"
                         >
+                        
                         <List>
                             <div className={classes.subTitle}>
-                            {type === "exp" ? 'Expenses' : 'Income'}
+                            {type === "exp" ? 'Expenses' : 'Incomes'}
                             </div>
                             
                             <div className={classes.title} >   
