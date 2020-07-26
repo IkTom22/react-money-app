@@ -1,19 +1,20 @@
 import React, {useContext} from 'react';
 import useInputState from'../hooks/useInputState';
 import {AccountsContext, DispatchContext} from '../contexts/accounts.context';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import Typography from '@material-ui/core/Typography';
 import {BalanceContext, DispatchBalContext} from '../contexts/balance.context';
-
 import { makeStyles } from '@material-ui/core/styles';
 import { v4 as uuidv4 } from 'uuid';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
-import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import DoneIcon from '@material-ui/icons/Done';
-import TransferMoney from '../TransferMoney';
-import TransferForm from '../TransferForm';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
+  
+
+  
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -23,20 +24,16 @@ const useStyles = makeStyles((theme) => ({
       .spacing(3)}px`,
   
     '& > *': {
-      margin: theme.spacing(2),
-      
+      margin: theme.spacing(2),  
     },
  doneIcon: {
     width: "3rem",
     height: "3rem",
-
-    
     }
    
   },
 }));
 
- 
 function AddAccountForm(props){
     const [values, handleChange, reset] = useInputState("");
     const dispatchAccounts = useContext(DispatchContext);
@@ -45,13 +42,20 @@ function AddAccountForm(props){
     const accountNames = accounts.map(a=> a.name);
     const [value, setValue] = React.useState(accountNames[0]);
     const [inputValue, setInputValue] = React.useState('');
-
     const mainBalance = useContext(BalanceContext);
     const dispatch = useContext(DispatchBalContext);
-  
     let accountIndex = accounts.findIndex(e => e.name === value);
-    
     let account = accounts[accountIndex]
+
+    const [state, setState] = React.useState({
+      checkedA: false
+      
+    });
+    const handleChangeSwitch = (event) => {
+      setState({ ...state, [event.target.name]: event.target.checked });
+    };
+  
+
     ValidatorForm.addValidationRule('isAccounteNameUnique', value => 
       accounts.every(
       ({name}) => name !== value
@@ -64,6 +68,7 @@ function AddAccountForm(props){
            value <= mainBalance.remaining
     );   
     return(
+      <FormGroup row>
         <ValidatorForm
             className={classes.root} 
             onSubmit={e => {
@@ -88,7 +93,13 @@ function AddAccountForm(props){
                 validators={["required", "isAccounteNameUnique"]}
                 errorMessages={["Enter Account Name", "Name already used"]}
             />
-            <TextValidator
+            
+              <FormControlLabel
+                control={<Switch checked={state.checkedA} onChange={handleChangeSwitch} name="checkedA" />}
+                label="Saving Account"
+              /> 
+             
+            {state.checkedA && <TextValidator
                 id="outlined-number"
                 label="Savings Goal"
                 type="number"
@@ -100,7 +111,7 @@ function AddAccountForm(props){
                   shrink: true,
                 }}
                 variant="outlined"
-              />
+              />}
               <Typography variant="subtitle1" className={classes.title} color='primary'> {`Available Funds $ ${mainBalance.remaining}`}</Typography>  
             <TextValidator
                 id="outlined-number"
@@ -124,6 +135,7 @@ function AddAccountForm(props){
                 <DoneIcon />
             </Fab>
         </ValidatorForm>
+        </FormGroup>
     )
 }
 export default AddAccountForm;

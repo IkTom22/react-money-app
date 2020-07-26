@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import DetailsTwoToneIcon from '@material-ui/icons/DetailsTwoTone';
 import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
 import { Grid } from '@material-ui/core';
+import AccountDetailesButton from './AccountDetailsButton';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,9 +44,10 @@ function generate(element) {
     }),
   );
 }
-const Account = memo(({id, name, total, goal, toGo }) => {
+const Account = memo((props) => {
    
     const classes = useStyles();
+    const {id, name,goal, toGo, total, exp} = props
     //const [secondary, setSecondary] = React.useState(false);
     return (
         
@@ -56,12 +58,10 @@ const Account = memo(({id, name, total, goal, toGo }) => {
             <ListItemText id={id} edge="end" secondary={goal ? `to go: $${toGo}` : null} style={{width: "30%", textAlign: "right"}}> $ {total}</ListItemText>
           </ListItem>
        
-            <ListItemSecondaryAction style={{width:"20%", display: "flex"}}>
-              <IconButton aria-label='Details' style={{paddingRight: 0}}>
-                <DetailsTwoToneIcon />
-              </IconButton>
+            <ListItemSecondaryAction style={{width:"20%", display: "flex", alignItems: "center"}}>
+              <AccountDetailesButton {...props} />
               <IconButton aria-label='Edit' >
-                <EditTwoToneIcon />
+                <EditTwoToneIcon id={id} name={name}  goal={goal} toGo={toGo} />
               </IconButton>
             </ListItemSecondaryAction>
          

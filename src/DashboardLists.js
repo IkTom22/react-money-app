@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import  {expItemsContext} from './contexts/exp/expItems.context';
 import {incItemsContext} from './contexts/inc/incItems.context';
-import DashboardDialogs from './DashboardDialogs';
+// import DashboardDialogs from './DashboardDialogs';
 import DashboardList from './DashboardList';
 import {groupBy, sumAmount} from './helper/filterAmount';
 
@@ -18,12 +18,7 @@ function DashboardLists(props){
     let incGroupedByTitle = groupBy(incItems, 'title');
     let expCategories = Object.keys(expGroupedByTitle);
     let incCategories= Object.keys(incGroupedByTitle);
-
-    // let amount = expCategories.map(e => {
-    //     return  {[e] :expGroupedByTitle[e].reduce((prev, cur)=>{
-    //         return prev + cur.amount
-    //     }, 0)} ;
-    // })
+    console.log(expCategories)
     let expAmount = sumAmount(expCategories, expGroupedByTitle);
     console.log(expAmount)
     let incAmount = sumAmount(incCategories, incGroupedByTitle);  

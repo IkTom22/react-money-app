@@ -4,9 +4,9 @@ import Categories from './Categories';
 import {DispatchBalContext} from './contexts/balance.context';
 import {DispatchIncsContext, incItemsContext} from './contexts/inc/incItems.context';
 import { DispatchExpsContext, expItemsContext} from './contexts/exp/expItems.context';
-import { AccountsContext } from './contexts/accounts.context';
+import { AccountsContext, DispatchContext } from './contexts/accounts.context';
 import { makeStyles } from '@material-ui/core/styles';
-import BudgetIcons from './BudgetIcons';
+// import BudgetIcons from './BudgetIcons';
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -15,6 +15,7 @@ import DoneIcon from '@material-ui/icons/Done';
 import cyan from '@material-ui/core/colors/cyan';
 import red from '@material-ui/core/colors/red';
 import deepPurple from '@material-ui/core/colors/deepPurple';
+import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
 
 //const buttonInc = cyan['A700'];
 const buttonInc = deepPurple['A700'];
@@ -66,20 +67,23 @@ const AccountForm = memo((props) => {
     const dispatchExps = useContext(DispatchExpsContext);
 
     const accounts = useContext(AccountsContext);
+    const dispatchAccount= useContext(DispatchContext);
     const accountNames = accounts.map(a=> a.name);
 
     const classes = useStyles();
     //const {incs, exps} = BudgetIcons; 
-    const {type, id} = props;
-    
-    
+    const {type, id,  handleClose} = props;
     const [value, setValue] = React.useState(accountNames[0]);
 
     const [inputValue, setInputValue] = React.useState('');
-    const accountId = accounts.filter((a) => a.name === inputValue && a.id );
+    const accountName = accounts.findIndex((a) => a.name== value );
+    console.log(value)
+    let accountIndex = accounts[accountName];
+    
+  console.log(accountIndex)
     const indexInc = incItems.findIndex(e => e.id === id);
     const indexExp= expItems.findIndex(e => e.id === id);
-
+ 
     let pickedIcon = incItems[indexInc];
     let pickedIconExp = expItems[indexExp]
     pickedIcon && console.log(pickedIcon.icon)
@@ -100,21 +104,27 @@ const AccountForm = memo((props) => {
                 } else if(type ==="exp") {
                   dispatchExps({
                     type: "ADD_EXP_DETAILS", 
-                    accountId: accountId,
+                    accountId: accountIndex.id,
                     id: id,
                     amount: values.amount,  
                     note: values.note 
                   })
                   dispatch({type: "MINUS_EXP", exp: values.amount})
+                  dispatchAccount({
+                    type: "SPENT", 
+                    accountId: accountIndex.id, 
+                    amount: values.amount
+                  })
+
                 }
-                props.handleClose();
+                handleClose();
                 
               }}
         >
             <Categories  id={id} type={type} />
             {type==="exp" 
               &&  <div>
-                      <br />
+                      
                       <Autocomplete
                         value={value}
                         onChange={(event, newValue) => {
@@ -176,17 +186,29 @@ const AccountForm = memo((props) => {
                 label="Memo"
                 fullWidth
             />
-            <Fab 
+            <Grid container justify="space-between" style={{width: "35%"}}>
+              <Fab 
                 size="small" 
                 color="secondary" 
                 aria-label="add" 
                 className={classes.doneIcon}
                 type="submit"
                 style={{backgroundColor: type==='inc' ? buttonInc : buttonExp }}
-            >
-                
+              >
                 <DoneIcon />
-            </Fab>
+              </Fab>
+              <Fab 
+                size="small" 
+                color="secondary" 
+                aria-label="add" 
+                className={classes.doneIcon}
+                onClick={handleClose}
+                style={{backgroundColor: type==='inc' ? buttonInc : buttonExp }}
+              >
+                <ExitToAppTwoToneIcon />
+              </Fab>
+            </Grid>
+            
       </form>
     )
 })

@@ -23,8 +23,16 @@ const accountsReducer = (state, action)=>{
                 ? {...account, 
                     toGo: parseFloat(account.goal)+ (parseFloat(account.total)-parseFloat(action.amount)), 
                     total: parseFloat(account.total) - parseFloat(action.amount)} 
-                    : account 
-            )       
+                : account 
+            )
+        case "SPENT":
+            return state.map(account =>
+                account.id === action.accountId
+                ? {...account,
+                    exp: parseFloat(account.exp) + parseFloat(action.amount),
+                    total: parseFloat(account.total) - parseFloat(action.amount),
+                    toGo:  account.goal !== 0 && parseFloat(account.toGo) + parseFloat(action.amount)} 
+                : account)
         default: 
             return state        
     }

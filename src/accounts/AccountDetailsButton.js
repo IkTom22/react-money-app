@@ -1,18 +1,19 @@
-import React from 'react';
-import AccountForm from '../AccountForm';
+import React  from 'react';
 import Fab from '@material-ui/core/Fab';
-// import {DispatchContext} from '../contexts/accounts.context';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import AddIcon from '@material-ui/icons/Add';
-import { v4 as uuidv4 } from 'uuid';
-// import styles from './styles/AddAccountStyles';
-// import withStyles from '@material-ui/core/withStyles';
-import cyan from '@material-ui/core/colors/cyan';
+import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
+import DetailsTwoToneIcon from '@material-ui/icons/DetailsTwoTone';
 
-const buttonColor = cyan['A100'];
+import SyncAltRoundedIcon from '@material-ui/icons/SyncAltRounded';
+
+import yellow from '@material-ui/core/colors/yellow';
+import AccountDetailsDialog from './AccountDetailsDialog';
+
+const buttonColor = yellow["A100"]
+
 const useStyles = makeStyles((theme) => ({
     modal: {
       display: 'flex',
@@ -25,15 +26,21 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
       
-      
     },
+    transfer: {
+        width: "25px",
+        height: "25px",
+        minHeight: "20px",
+        backgroundColor: buttonColor,
+        
+    }
+   
   }));
 
-const AddIncome = () =>{
-    // const accounts = useContext(DispatchContext);
+function AccountDetailsButton(props){
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-
+    
+    console.log(props)
     const handleOpen = () => {
         setOpen(true);
     };
@@ -43,17 +50,8 @@ const AddIncome = () =>{
     };
     return (
         <React.Fragment>
-        
-            <Fab 
-                aria-label="add income" 
-
-                style={{
-                            marginTop: "2rem", 
-                            backgroundColor: buttonColor,
-                        }} 
-                onClick={handleOpen}
-            >
-                <AddIcon />
+            <Fab aria-label="allocate funds" className={classes.transfer} onClick={handleOpen} >
+                <DetailsTwoToneIcon />
             </Fab>
             <Modal
                 aria-labelledby="transition-modal-title"
@@ -67,15 +65,15 @@ const AddIncome = () =>{
                 timeout: 500,
                 }}
             >
-            <Fade in={open}>
-            <div className={classes.paper}>
-                <AccountForm type="inc" id={uuidv4()} handleClose={handleClose}/>
-            </div>
-            </Fade>
-        </Modal>
+                <Fade in={open}>
+                <div className={classes.paper}>
+                    <AccountDetailsDialog  {...props} handleClose={handleClose}/>
+                </div>
+                </Fade>
+            </Modal>
        
       </React.Fragment> 
     )
 }
 
-export default AddIncome;
+export default AccountDetailsButton;

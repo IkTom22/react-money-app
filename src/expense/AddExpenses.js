@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function AddExpenses(){
+const AddExpenses=()=>{
     // const accounts = useContext(DispatchContext);
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
