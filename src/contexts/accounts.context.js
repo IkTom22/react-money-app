@@ -8,6 +8,7 @@ const defaultAccounts = [
     {
         id: uuidv4(),
         name: "Spending Account",
+        goal: 0,
         total: 0,
         exp: 0
 

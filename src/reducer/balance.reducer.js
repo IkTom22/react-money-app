@@ -6,7 +6,7 @@ const balanceReducer = (state, action)=>{
         if(state.remaining === 0 && state.mainAccount === 0) {
             return {...state, mainAccount: parseFloat(action.mainAccount), remaining: parseFloat(action.mainAccount)}
         } else {
-            return {...state, mainAccount: parseFloat(action.mainAccount), remaining: parseFloat(action.mainAccount + (action.mainAccount-state.mainAccount))}
+            return {...state, mainAccount: parseFloat(action.mainAccount), remaining: parseFloat(state.remaining) + (parseFloat(action.mainAccount)-parseFloat(state.mainAccount))}
         }     
 
     case "ADD_INC":

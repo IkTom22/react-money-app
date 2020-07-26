@@ -8,8 +8,9 @@ export default initialVal => {
     icon: '',
     note: '',
     id: '',
-    accountId: "", 
-    mainAccount:''
+    accountId: '', 
+    mainAccount:'',
+    goal: ''
  
   });
   // const handleChange = e => {
