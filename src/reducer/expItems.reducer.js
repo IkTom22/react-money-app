@@ -12,7 +12,9 @@ const expItemsReducer = (state, action)=>{
                                 title: action.title, 
                                 icon: action.icon, 
                                 backgroundColor: action.backgroundColor, 
-                                button: !state.button },
+                                selectedDate: action.selectedDate,
+                                month: action.month
+                            },
                             ...state.slice(index +1)
                         ] 
                         : [...state,
@@ -22,20 +24,24 @@ const expItemsReducer = (state, action)=>{
                                     title: action.title,
                                     icon: action.icon,
                                     backgroundColor: action.backgroundColor,
-                                    button: !state.button
+                                    selectedDate: action.selectedDate,
+                                    month: action.month
                                 }
                         ] 
               
         case "ADD_DETAILS":     
             return  state.map(e => 
-                e.id === action.id ? {...e, amount: parseFloat(action.amount), note: action.note } : e) 
+                e.id === action.id ? {...e, amount: Number(action.amount), note: action.note, selectedDate: action.selectedDate,accountId: action.accountId, month: action.month} : e) 
+        case "ADD_DATE":     
+            return  state.map(e => 
+                e.id === action.id ? {...e, selectedDate: action.selectedDate} : e)         
         case "ADD_EXP_DETAILS":  
             return  state.map(e => 
-                e.id === action.id ? {...e, accountId:action.id, id: action.id,  amount: parseFloat(action.amount), note: action.note } : e)   
-        case "TOGGLE_BUTTON" :
-            return  state.map(e =>
-                e.id === action.id ? { ...e, button: !e.button} : e
-                )      
+                e.id === action.id ? {...e, accountId:action.id, id: action.id,  amount: Number(action.amount), note: action.note, month: action.month } : e)   
+        // case "TOGGLE_BUTTON" :
+        //     return  state.map(e =>
+        //         e.id === action.id ? { ...e, button: !e.button} : e
+        //         )      
         default:
             return state
                 

@@ -4,44 +4,29 @@ const balanceReducer = (state, action)=>{
  switch(action.type){
     case "Edit_BALANCE":
         if(state.remaining === 0 && state.mainAccount === 0) {
-            return {...state, mainAccount: parseFloat(action.mainAccount), remaining: parseFloat(action.mainAccount)}
+            return {...state, mainAccount: Number(action.mainAccount), remaining: Number(action.mainAccount)}
         } else {
-            return {...state, mainAccount: parseFloat(action.mainAccount), remaining: parseFloat(state.remaining) + (parseFloat(action.mainAccount)-parseFloat(state.mainAccount))}
+            return {...state, mainAccount: Number(action.mainAccount), remaining: Number(state.remaining) + (Number(action.mainAccount)-Number(state.mainAccount))}
         }     
 
     case "ADD_INC":
         return {
                 ...state, 
-                mainAccount: parseFloat(state.mainAccount) + parseFloat(action.inc), 
-                inc: parseFloat(state.inc) + parseFloat(action.inc),
-                remaining: parseFloat(state.remaining) + parseFloat(action.inc)
+                mainAccount: Number(state.mainAccount) + Number(action.inc), 
+                inc: Number(state.inc) + Number(action.inc),
+                remaining: Number(state.remaining) + Number(action.inc)
                     
                 }
     case "MINUS_EXP":
-        return {...state, mainAccount: parseFloat(state.mainAccount) - parseFloat(action.exp), exp: parseFloat(state.exp) + parseFloat(action.exp)}
+        return {...state, mainAccount: Number(state.mainAccount) - Number(action.exp), exp: Number(state.exp) + Number(action.exp)}
     
     case "TRANSFER_OUT":
-        return {...state, remaining: parseFloat(state.remaining) - parseFloat(action.amount)}            
+        return {...state, remaining: Number(state.remaining) - Number(action.amount)}            
     
     case "TRANSFER_IN":
-        return {...state, remaining: parseFloat(state.remaining) + parseFloat(action.amount)}        
+        return {...state, remaining: Number(state.remaining) + Number(action.amount)}        
         default: 
         return state
  }
 }
 export default balanceReducer;
-// const accountReducer = (state, action)=>{
-//     switch(action.type){
-//         case "ADD":
-//             return [...state, {id:uuidv4(), name: action.name, amount: 0}];
-//         case "REMOVE":
-//             return state.filter(account => account.id !==action.id);
-//         case "EDIT":
-//             return state.map(account => 
-//                 account.id === action.id ? {...account, amount: action.newAmount} : account) 
-                   
-//         default: 
-//             return state        
-//     }
-// }
-// export default accountReducer;

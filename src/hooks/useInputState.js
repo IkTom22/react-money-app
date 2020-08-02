@@ -10,8 +10,9 @@ export default initialVal => {
     id: '',
     accountId: '', 
     mainAccount:'',
-    goal: ''
- 
+    goal: '',
+    selectedDate: '',
+    calenderFocused: false   
   });
   // const handleChange = e => {
   //   setValue({...state, e.target.value});
@@ -27,8 +28,9 @@ export default initialVal => {
       iconName: '',
       note: '',
       id: '',
-      mainAccount:''
-   
+      mainAccount:'',
+      selectedDate: '',
+      calenderFocused: false 
     });
   };
   return [values, handleChange, reset];

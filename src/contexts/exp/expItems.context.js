@@ -12,7 +12,9 @@ const defaultExpItems = [
         title: "", 
         note: "", 
         icon: {}, 
-        button: false
+        selectedDate: new Date(),
+        calenderFocused: false,
+        month: ''
     }
 ]
 

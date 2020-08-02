@@ -1,13 +1,15 @@
-import React, {useContext, memo} from 'react';
+import React, {useContext, memo } from 'react';
 import useInputState from'./hooks/useInputState';
+import 'react-dates/lib/css/_datepicker.css';
+import moment from 'moment';
 import Categories from './Categories';
 import {DispatchBalContext} from './contexts/balance.context';
 import {DispatchIncsContext, incItemsContext} from './contexts/inc/incItems.context';
 import { DispatchExpsContext, expItemsContext} from './contexts/exp/expItems.context';
 import { AccountsContext, DispatchContext } from './contexts/accounts.context';
 import { makeStyles } from '@material-ui/core/styles';
-// import BudgetIcons from './BudgetIcons';
-import Grid from '@material-ui/core/Grid'
+import {month} from './helper/datePicker';
+import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Fab from '@material-ui/core/Fab';
@@ -16,17 +18,26 @@ import cyan from '@material-ui/core/colors/cyan';
 import red from '@material-ui/core/colors/red';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
+import Calender from './Calender';
+import { BottomNavigationAction } from '@material-ui/core';
+// import DateFnsUtils from '@date-io/date-fns';
+// import {
+//   MuiPickersUtilsProvider,
+//   KeyboardDatePicker,
+// } from '@material-ui/pickers';
 
 //const buttonInc = cyan['A700'];
 const buttonInc = deepPurple['A700'];
 const buttonExp = red['A200'];
-
-
+// const now = moment().format('Do MMM YYYY');
+// console.log(now)
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    height: 'auto',
+    overflowY: 'auto',
     width: '100%',
     padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme
       .spacing(3)}px`,
@@ -65,13 +76,11 @@ const AccountForm = memo((props) => {
     const incItems = useContext(incItemsContext);
     const expItems = useContext(expItemsContext);
     const dispatchExps = useContext(DispatchExpsContext);
-
     const accounts = useContext(AccountsContext);
     const dispatchAccount= useContext(DispatchContext);
     const accountNames = accounts.map(a=> a.name);
-
     const classes = useStyles();
-    //const {incs, exps} = BudgetIcons; 
+
     const {type, id,  handleClose} = props;
     const [value, setValue] = React.useState(accountNames[0]);
 
@@ -79,14 +88,22 @@ const AccountForm = memo((props) => {
     const accountName = accounts.findIndex((a) => a.name== value );
     console.log(value)
     let accountIndex = accounts[accountName];
-    
-  console.log(accountIndex)
+
     const indexInc = incItems.findIndex(e => e.id === id);
     const indexExp= expItems.findIndex(e => e.id === id);
  
     let pickedIcon = incItems[indexInc];
     let pickedIconExp = expItems[indexExp]
-    pickedIcon && console.log(pickedIcon.icon)
+    pickedIcon && console.log(pickedIcon)
+
+
+    const [selectedDate, setSelectedDate] = React.useState(new Date());
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
+    console.log(selectedDate)
+   
+    
     return(
         <form
             className={classes.root} 
@@ -97,17 +114,21 @@ const AccountForm = memo((props) => {
                       type: "ADD_DETAILS", 
                       id: id,
                       amount: values.amount,  
-                      note: values.note 
+                      note: values.note,
+                      selectedDate:  selectedDate,
+                      month: month(selectedDate)
                     })
                     
                   dispatch({type: "ADD_INC", inc: values.amount}) 
                 } else if(type ==="exp") {
                   dispatchExps({
-                    type: "ADD_EXP_DETAILS", 
+                    type: "ADD_DETAILS", 
                     accountId: accountIndex.id,
                     id: id,
                     amount: values.amount,  
-                    note: values.note 
+                    note: values.note,
+                    selectedDate:  selectedDate,
+                    month: month(selectedDate)
                   })
                   dispatch({type: "MINUS_EXP", exp: values.amount})
                   dispatchAccount({
@@ -177,7 +198,13 @@ const AccountForm = memo((props) => {
                 </Grid>
               </Grid>
             </div>
-              
+            <Calender 
+                id={id} 
+                type={type} 
+                handleChange={handleChange} 
+                values={values} selectedDate={selectedDate}  
+                handleDateChange={handleDateChange}
+              />
               
             <TextField 
                 id="standard-basic"

@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 function AccountDetailsButton(props){
     const classes = useStyles();
-    
+    const [open, setOpen] = React.useState(false);
     console.log(props)
     const handleOpen = () => {
         setOpen(true);

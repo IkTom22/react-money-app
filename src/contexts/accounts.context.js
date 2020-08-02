@@ -11,7 +11,6 @@ const defaultAccounts = [
         goal: 0,
         total: 0,
         exp: 0
-
     }
 
 ];
