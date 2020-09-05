@@ -13,14 +13,14 @@ import ListItem from '@material-ui/core/ListItem';
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
-import Slide from '@material-ui/core/Slide';
+
 import red from '@material-ui/core/colors/red';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 
 //const buttonInc = cyan['A700'];
 
-const pageExp = red['A400'];
 
+const pageExp = red['A400'];
 const useStyles= makeStyles((theme) => ({
     root: {
         height: '100vh'
@@ -47,10 +47,7 @@ const useStyles= makeStyles((theme) => ({
     
   }))
 
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    
-    return <Slide direction= "left" ref={ref} {...props} />;
-  });
+
   
 function AccountDetailsDialog(props){
     console.log(props)
@@ -60,9 +57,9 @@ function AccountDetailsDialog(props){
 
 
      return (
-        <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} className={classes.root} style={{height: '100vh', overflow: 'auto', backgroundColor:  pageExp}}>
+        
             <Grid container  direction="column" alignItems="center" style={{height: '100vh', overflow: 'auto', backgroundColor: pageExp}}>
-                <IconButton onClick={handleClose} color="white" aria-label="go back" style={{position: 'fixed', right: '1rem', top: '3.5rem', color: 'white'}}>
+                <IconButton onClick={handleClose}  aria-label="go back" style={{position: 'fixed', right: '1rem', top: '3.5rem', color: "white"}}>
                     <ExitToAppTwoToneIcon />
                 </IconButton> 
                 <Paper elevation={3} style={{ marginTop: "3rem", width: "50%", padding: '0.5rem 0'}}>
@@ -76,7 +73,7 @@ function AccountDetailsDialog(props){
                             alignItems="center"
                         >
                         
-                        <List>
+                        <div>
                             <div className={classes.subTitle}>
                                 {name}
                             </div>
@@ -84,7 +81,7 @@ function AccountDetailsDialog(props){
                             <div className={classes.title} >   
                                 {`$ ${total}`}
                             </div>
-                        </List>
+                        </div>
                     </Grid>
                 </Paper>
                 <Grid container style={{ marginTop: "1.5rem", width: "90%" }} >
@@ -93,8 +90,8 @@ function AccountDetailsDialog(props){
                    
                 </Grid>
                 
-        </Grid>
-        </Dialog>
+            </Grid>
+  
     )
 }
 

@@ -7,7 +7,7 @@ import IncDashboard from '../income/IncDashboard';
 const AppRouter = () => (
     <BrowserRouter>
         <Switch>
-            <Route path="/" component={BugdetApp} exact={true}/>
+            <Route path="/" component={BugdetApp} exact/>
             <Route path="/expdashboard" component={ExpDashboard} />
             <Route path="/incdashboard" component={IncDashboard} />
         </Switch>

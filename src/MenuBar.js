@@ -46,7 +46,9 @@ function MenuBar(){
                 <Typography variant="h6" className={classes.title}>
                   {month(new Date())}
                 </Typography>
-                <IconButton ><MoreVertIcon /></IconButton>
+                <IconButton >s
+                  <MoreVertIcon />
+                </IconButton>
             </Toolbar>
         </AppBar>
     )

@@ -10,7 +10,8 @@ const defaultAccounts = [
         name: "Spending Account",
         goal: 0,
         total: 0,
-        exp: 0
+        exp: 0,
+        toGo: 0
     }
 
 ];

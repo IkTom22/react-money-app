@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
-import DetailsTwoToneIcon from '@material-ui/icons/DetailsTwoTone';
+// import DetailsTwoToneIcon from '@material-ui/icons/DetailsTwoTone';
 import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
 import { Grid } from '@material-ui/core';
 import AccountDetailesButton from './AccountDetailsButton';
@@ -47,7 +47,7 @@ function generate(element) {
 const Account = memo((props) => {
    
     const classes = useStyles();
-    const {id, name,goal, toGo, total, exp} = props
+    const {id, name, goal, toGo, total, exp} = props
     //const [secondary, setSecondary] = React.useState(false);
     return (
         
@@ -61,7 +61,7 @@ const Account = memo((props) => {
             <ListItemSecondaryAction style={{width:"20%", display: "flex", alignItems: "center"}}>
               <AccountDetailesButton {...props} />
               <IconButton aria-label='Edit' >
-                <EditTwoToneIcon id={id} name={name}  goal={goal} toGo={toGo} />
+                <EditTwoToneIcon  />
               </IconButton>
             </ListItemSecondaryAction>
          
