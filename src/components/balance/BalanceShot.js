@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
-import {BalanceContext} from '../contexts/balance.context';
-import styles from '../styles/BalanceStyles';
+import {BalanceContext} from '../../contexts/balance.context';
+import styles from '../../styles/BalanceStyles';
 import { withStyles } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';

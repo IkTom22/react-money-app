@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import BugdetApp from '../BudgetApp';
-import ExpDashboard from '../expense/ExpDashboard';
-import IncDashboard from '../income/IncDashboard';
+import BugdetApp from '../page/BudgetApp';
+import ExpDashboard from '../components/expense/ExpDashboard';
+import IncDashboard from '../components/income/IncDashboard';
 
 const AppRouter = () => (
     <BrowserRouter>

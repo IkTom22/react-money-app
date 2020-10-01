@@ -1,14 +1,14 @@
 import React  from 'react';
 import Fab from '@material-ui/core/Fab';
 import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
+//import Modal from '@material-ui/core/Modal';
 import Dialog from '@material-ui/core/Dialog';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
+// import Backdrop from '@material-ui/core/Backdrop';
+// import Fade from '@material-ui/core/Fade';
+// import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
 import DetailsTwoToneIcon from '@material-ui/icons/DetailsTwoTone';
 import Slide from '@material-ui/core/Slide';
-import SyncAltRoundedIcon from '@material-ui/icons/SyncAltRounded';
+// import SyncAltRoundedIcon from '@material-ui/icons/SyncAltRounded';
 
 
 import yellow from '@material-ui/core/colors/yellow';

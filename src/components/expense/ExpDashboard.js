@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
 import Paper from '@material-ui/core/Paper';
-import {BalanceContext} from '../contexts/balance.context';
+import {BalanceContext} from '../../contexts/balance.context';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import {makeStyles} from '@material-ui/core/styles';
 
-import Details from '../DashboardDialogs';
+import Details from '../../page/DashboardDialogs';
 
 const useStyles= makeStyles((theme) => ({
     root: {

@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
-import useInputState from'../hooks/useInputState';
-import {AccountsContext, DispatchContext} from '../contexts/accounts.context';
+import useInputState from'../../hooks/useInputState';
+import {AccountsContext, DispatchContext} from '../../contexts/accounts.context';
 import Typography from '@material-ui/core/Typography';
-import {BalanceContext, DispatchBalContext} from '../contexts/balance.context';
+import {BalanceContext, DispatchBalContext} from '../../contexts/balance.context';
 import { makeStyles } from '@material-ui/core/styles';
 import { v4 as uuidv4 } from 'uuid';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';

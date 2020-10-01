@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
-import {BalanceContext} from '../contexts/balance.context';
+import {BalanceContext} from '../../contexts/balance.context';
 import BalanceEdit from './BalanceEdit';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import {withStyles} from '@material-ui/core/styles';
-import styles from '../styles/BalanceStyles';
+import styles from '../../styles/BalanceStyles';
 
 function Balance(props){
     const {classes} = props;

@@ -2,11 +2,11 @@ import React, {useContext} from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
-import  {expItemsContext} from './contexts/exp/expItems.context';
-import {incItemsContext} from './contexts/inc/incItems.context';
+import  {expItemsContext} from '../contexts/exp/expItems.context';
+import {incItemsContext} from '../contexts/inc/incItems.context';
 // import DashboardDialogs from './DashboardDialogs';
 import DashboardList from './DashboardList';
-import {groupBy, sumAmount} from './helper/filterAmount';
+import {groupBy, sumAmount} from '../helper/filterAmount';
 
 
 function DashboardLists(props){

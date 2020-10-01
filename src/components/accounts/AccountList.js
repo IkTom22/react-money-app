@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import Account from './Account';
 import MoneyPool from '../MoneyPool';
-import {AccountsContext} from '../contexts/accounts.context';
+import {AccountsContext} from '../../contexts/accounts.context';
 //import {BalanceContext} from '../contexts/balance.context';
 import Grid from '@material-ui/core/Grid'
 

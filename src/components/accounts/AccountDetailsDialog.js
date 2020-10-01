@@ -1,21 +1,21 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import Dialog from '@material-ui/core/Dialog';
+//import Dialog from '@material-ui/core/Dialog';
 
-import {BalanceContext} from '../contexts/balance.context';
+//import {BalanceContext} from '../../contexts/balance.context';
 import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItem from '@material-ui/core/ListItem';
+//import List from '@material-ui/core/List';
+//import ListItemText from '@material-ui/core/ListItemText';
+//import ListItem from '@material-ui/core/ListItem';
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
-import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/Close';
+//import Typography from '@material-ui/core/Typography';
+// import CloseIcon from '@material-ui/icons/Close';
 
 import red from '@material-ui/core/colors/red';
-import deepPurple from '@material-ui/core/colors/deepPurple';
+// import deepPurple from '@material-ui/core/colors/deepPurple';
 
 //const buttonInc = cyan['A700'];
 

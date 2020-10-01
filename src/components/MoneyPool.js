@@ -1,5 +1,5 @@
 import React, {useContext, memo} from 'react';
-import {BalanceContext} from './contexts/balance.context';
+import {BalanceContext} from '../contexts/balance.context';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -33,6 +33,7 @@ function MoneyPool(){
     const mainBalance= useContext(BalanceContext);
     const { remaining} = mainBalance;
     const classes = useStyles();
+    
    
     return (
         <Paper className={classes.root}>

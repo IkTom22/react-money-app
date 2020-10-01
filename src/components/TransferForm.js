@@ -1,7 +1,7 @@
 import React, {useContext, memo} from 'react';
-import useInputState from'./hooks/useInputState';
-import {AccountsContext, DispatchContext} from './contexts/accounts.context';
-import {BalanceContext, DispatchBalContext} from './contexts/balance.context';
+import useInputState from'../hooks/useInputState';
+import {AccountsContext, DispatchContext} from '../contexts/accounts.context';
+import {BalanceContext, DispatchBalContext} from '../contexts/balance.context';
 import { makeStyles } from '@material-ui/core/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Typography from '@material-ui/core/Typography';
