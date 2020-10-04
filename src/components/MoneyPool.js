@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 function MoneyPool(){
     const mainBalance= useContext(BalanceContext);
-    const { remaining} = mainBalance;
+    const { remaining, id, name} = mainBalance;
     const classes = useStyles();
     
    
@@ -40,7 +40,7 @@ function MoneyPool(){
             <Grid container alignItems="center" justify="space-between">
                 <div>Money Pool</div>
                 <div>{`$ ${remaining} `}</div>
-                <TransferMoney />
+                <TransferMoney type="main" id={id}  name={name} />
             </Grid>
             
         </Paper>

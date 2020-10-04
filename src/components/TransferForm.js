@@ -37,24 +37,29 @@ const useStyles = makeStyles((theme) => ({
 
  
 const TransferForm= memo((props) => {
-    const [values, handleChange, reset] = useInputState("");
+
+    const { type, id, name } = props;
     const dispatchAccounts = useContext(DispatchContext);
     const accounts = useContext(AccountsContext);
     const mainBalance = useContext(BalanceContext);
     const dispatch = useContext(DispatchBalContext);
 
     const accountNames = accounts.map(a=> a.name);
-    const [value, setValue] = React.useState(accountNames[0]);
-    const [inputValue, setInputValue] = React.useState('');
-
-    const classes = useStyles();
-  
-    let accountIndex = accounts.findIndex(e => e.name === value);
-    
-    let account = accounts[accountIndex]
    
-    
-   console.log(mainBalance.remaining)
+    accountNames.push(mainBalance.name);
+    let availableAccounts = accountNames.filter(e =>e !== name);
+
+    const [values, handleChange, reset] = useInputState("");
+    const [value, setValue] = React.useState(availableAccounts[0]);
+    const [inputValue, setInputValue] = React.useState('');
+    const classes = useStyles();
+
+    let accountFromIndex = accounts.findIndex(e =>e.id === id)
+    let accountIndex = accounts.findIndex(e => e.name === value);
+    let accountTo = accounts[accountIndex];
+    let accountFrom = accounts[accountFromIndex];
+    console.log(accountTo)
+    console.log(accountFrom)
     ValidatorForm.addValidationRule('isFundsSufficient', value => 
            value <= mainBalance.remaining
     );
@@ -63,22 +68,38 @@ const TransferForm= memo((props) => {
             className={classes.root} 
             onSubmit={e => {
                 e.preventDefault();
-                dispatchAccounts({ 
-                    type: "TRANSFER_IN", 
-                    id: account.id, 
-                    amount: values.amount
-                });
-                dispatch({
-                    type:"TRANSFER_OUT",
-                    amount: values.amount
-                })
+                if(type==="main") {
+                    dispatchAccounts({ 
+                        type: "TRANSFER_IN", 
+                        id: accountTo.id, 
+                        amount: values.amount
+                    });
+                    dispatch({
+                        type:"TRANSFER_OUT",
+                        amount: values.amount
+                    })
+                } else if (type==="account"){
+                    dispatchAccounts({
+                        type: "TRANSFER_IN",
+                        id: accountTo.id,
+                        amount: values.amount
+                    });
+                    dispatchAccounts({
+                        type: "TRANSFER_OUT",
+                        id: accountFrom.id,
+                        amount: values.amount
+                    })
+                }
                 reset();
                 props.handleClose();
               }}
         >
-        <Typography variant="subtitle1" className={classes.title} color='primary'> {`Available Funds $ ${mainBalance.remaining}`}</Typography>  
+            <Typography variant="subtitle1" className={classes.title} color='primary'> 
+            {type==="main" && `Available Funds $ ${mainBalance.remaining}`} 
+            {type==="account" && `Available Funds $ ${accountFrom.total}` }
+            </Typography>  
             <div>
-               
+            
                 <br />
                 <Autocomplete
                     value={value}
@@ -90,7 +111,7 @@ const TransferForm= memo((props) => {
                         setInputValue(newInputValue);
                     }}
                     id="controllable-states-demo"
-                    options={accountNames}
+                    options={availableAccounts}
                     style={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Allocate Funds To" variant="outlined" />}
                 />

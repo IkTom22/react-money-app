@@ -25,7 +25,7 @@ const balanceReducer = (state, action)=>{
     
     case "TRANSFER_IN":
         return {...state, remaining: Number(state.remaining) + Number(action.amount)}        
-        default: 
+    default: 
         return state
  }
 }

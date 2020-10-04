@@ -1,14 +1,16 @@
 import React, {createContext, memo} from 'react';
 import balanceReducer from '../reducer/balance.reducer';
 import {useLocalStorageReducer} from '../hooks/useLocalStorageReducer';
+import { v4 as uuidv4 } from 'uuid';
 
 
 const defaultBalance = {
     mainAccount: 0,
     inc: 0,
     exp: 0,
-    remaining: 0
-    
+    remaining: 0,
+    name: "Saving Pool",
+    id: uuidv4()
 }
 
 

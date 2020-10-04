@@ -33,10 +33,11 @@ const useStyles = makeStyles((theme) => ({
    
   }));
 
-function TransferMoney(){
+function TransferMoney({type, id, name}){
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     
+    console.log(type);
     const handleOpen = () => {
         setOpen(true);
     };
@@ -63,8 +64,9 @@ function TransferMoney(){
             >
                 <Fade in={open}>
                 <div className={classes.paper}>
-                    <TransferForm  handleClose={handleClose}/>
+                    <TransferForm  type={type} id={id}  name={name} handleClose={handleClose}/>
                 </div>
+                
                 </Fade>
             </Modal>
        

@@ -85,7 +85,7 @@ const AccountForm = memo((props) => {
     const [value, setValue] = React.useState(accountNames[0]);
 
     const [inputValue, setInputValue] = React.useState('');
-    const accountName = accounts.findIndex((a) => a.name== value );
+    const accountName = accounts.findIndex((a) => a.name=== value );
     console.log(value)
     let accountIndex = accounts[accountName];
 
