@@ -15,8 +15,13 @@ const balanceReducer = (state, action)=>{
                 mainAccount: Number(state.mainAccount) + Number(action.inc), 
                 inc: Number(state.inc) + Number(action.inc),
                 remaining: Number(state.remaining) + Number(action.inc)
-                    
-                }
+        }
+       case "ADD_INC_INFO_ONLY" :
+        return {
+            ...state, 
+            mainAccount: Number(state.mainAccount) + Number(action.inc), 
+            inc: Number(state.inc) + Number(action.inc)
+        } 
     case "MINUS_EXP":
         return {...state, mainAccount: Number(state.mainAccount) - Number(action.exp), exp: Number(state.exp) + Number(action.exp)}
     

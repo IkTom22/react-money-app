@@ -38,7 +38,7 @@ function MoneyPool(){
     return (
         <Paper className={classes.root}>
             <Grid container alignItems="center" justify="space-between">
-                <div>Money Pool</div>
+                <div>{name}</div>
                 <div>{`$ ${remaining} `}</div>
                 <TransferMoney type="main" id={id}  name={name} />
             </Grid>

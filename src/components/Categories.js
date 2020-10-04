@@ -25,6 +25,7 @@ import {DispatchExpsContext} from '../contexts/exp/expItems.context';
 // import cyan from '@material-ui/core/colors/cyan';
 import red from '@material-ui/core/colors/red';
 import deepPurple from '@material-ui/core/colors/deepPurple';
+import { grey } from '@material-ui/core/colors';
 
 const buttonInc = deepPurple['A200'];
 const buttonExp = red['A400'];
@@ -37,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         justifyContent: 'space-around'
         
+    },
+    mainTitle: {
+      color:"#989898"
     },
     categoryIcons: {
       width: '80px',
@@ -91,6 +95,7 @@ function Categories(props){
             return(
                 <Grid container justify='center' alignItems='center' style={{paddingBottom: 0, marginBottom: 0
                 }}>
+                    <div className={classes.mainTitle}> Pick an category</div>
                     <List className={classes.root} >
                     
                         {incs.map((inc, i)=> (

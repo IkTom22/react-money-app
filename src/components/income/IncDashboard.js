@@ -2,7 +2,7 @@ import React from 'react';
 
 function IncDashboard(){
     return (
-        <div>ExpenseDashboard</div>
+        <div>Income Dashboard</div>
     )
 }
 

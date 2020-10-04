@@ -34,7 +34,7 @@ const EditBalanceForm = memo((props)=>{
     const [values, handleChange, reset] = useInputState("");
     const dispatch = useContext(DispatchBalContext);
     const classes = useStyles();
-    console.log(typeof(value))
+   
     return(
         <form 
             className={classes.root} 

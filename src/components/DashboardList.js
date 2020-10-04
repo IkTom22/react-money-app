@@ -59,35 +59,36 @@ function DashboardList(props){
     return (
         
             <ListItem >
-           
+              
                 <IconButton className={classes.picked}>
-                    {type ==="exp" &&
-                      <pickedExpIcon.icon
-                          style={{
-                              fontsize:'large',
-                              backgroundColor: pickedExpIcon.backgroundColor,
-                              borderRadius: '50%',
-                              color: 'white',
-                              marginRight: '1rem',
-                              padding: '2px'
-                          }} 
-                    />}
-                    {type==="inc" &&
-                      <pickedIncIcon.icon
-                          style={{
-                              fontsize:'small',
-                              backgroundColor: pickedIncIcon.backgroundColor,
-                              borderRadius: '50%',
-                              color: 'black',
-                              marginRight: '1rem'
-                          }} 
-                      />}  
-                    </IconButton>    
-            
+                {type ==="exp" && 
+                  <pickedExpIcon.icon
+                      style={{
+                          fontsize:'large',
+                          backgroundColor: pickedExpIcon.backgroundColor,
+                          borderRadius: '50%',
+                          color: 'white',
+                          marginRight: '1rem',
+                          padding: '2px'
+                      }} 
+                  />
+                }
+                {type==="inc"  &&
+                  <pickedIncIcon.icon
+                      style={{
+                          fontsize:'small',
+                          backgroundColor: pickedIncIcon.backgroundColor,
+                          borderRadius: '50%',
+                          color: 'black',
+                          marginRight: '1rem'
+                      }} 
+                    />
+                  } 
+                
+                </IconButton>  
              
                 <ListItemText
-                  primary={title}
-                  
+                  primary={title ? title : 'misc'}
                 />
                 <ListItem>
                   <IconButton style={{marginLeft: 'auto'}} aria-label="amount" >

@@ -21,7 +21,7 @@ const accountsReducer = (state, action)=>{
             return state.map(account => 
                 account.id === action.id 
                 ? {...account, 
-                    toGo: Number(account.goal)+ (Number(account.total)- Number(action.amount)), 
+                    toGo: Number(account.goal)- (Number(account.total)- Number(action.amount)), 
                     total: Number(account.total) - Number(action.amount)
                 }  : account 
                

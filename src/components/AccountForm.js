@@ -3,7 +3,7 @@ import useInputState from'../hooks/useInputState';
 import 'react-dates/lib/css/_datepicker.css';
 // import moment from 'moment';
 import Categories from './Categories';
-import {DispatchBalContext} from '../contexts/balance.context';
+import {DispatchBalContext, BalanceContext} from '../contexts/balance.context';
 import {DispatchIncsContext, incItemsContext} from '../contexts/inc/incItems.context';
 import { DispatchExpsContext, expItemsContext} from '../contexts/exp/expItems.context';
 import { AccountsContext, DispatchContext } from '../contexts/accounts.context';
@@ -14,7 +14,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Fab from '@material-ui/core/Fab';
 import DoneIcon from '@material-ui/icons/Done';
-import cyan from '@material-ui/core/colors/cyan';
+//import cyan from '@material-ui/core/colors/cyan';
 import red from '@material-ui/core/colors/red';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
@@ -71,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AccountForm = memo((props) => {
     const [values, handleChange] = useInputState("");
+    const mainBalance = useContext(BalanceContext);
     const dispatch = useContext(DispatchBalContext);
     const dispatchIncs = useContext(DispatchIncsContext);
     const incItems = useContext(incItemsContext);
@@ -78,7 +79,9 @@ const AccountForm = memo((props) => {
     const dispatchExps = useContext(DispatchExpsContext);
     const accounts = useContext(AccountsContext);
     const dispatchAccount= useContext(DispatchContext);
+
     const accountNames = accounts.map(a=> a.name);
+    accountNames.push(mainBalance.name);
     const classes = useStyles();
 
     const {type, id,  handleClose} = props;
@@ -86,9 +89,9 @@ const AccountForm = memo((props) => {
 
     const [inputValue, setInputValue] = React.useState('');
     const accountName = accounts.findIndex((a) => a.name=== value );
-    console.log(value)
+    
     let accountIndex = accounts[accountName];
-
+  
     const indexInc = incItems.findIndex(e => e.id === id);
     const indexExp= expItems.findIndex(e => e.id === id);
  
@@ -101,7 +104,7 @@ const AccountForm = memo((props) => {
     const handleDateChange = (date) => {
         setSelectedDate(date);
     };
-    console.log(selectedDate)
+   // console.log(selectedDate)
    
     
     return(
@@ -109,7 +112,7 @@ const AccountForm = memo((props) => {
             className={classes.root} 
             onSubmit={e => {
                 e.preventDefault();
-                if(type==="inc") {
+                if(type==="inc" && inputValue === mainBalance.name ) {
                   dispatchIncs({
                       type: "ADD_DETAILS", 
                       id: id,
@@ -120,7 +123,25 @@ const AccountForm = memo((props) => {
                     })
                     
                   dispatch({type: "ADD_INC", inc: values.amount}) 
-                } else if(type ==="exp") {
+
+                } else if (type==="inc" && inputValue !== mainBalance.name ){
+                  dispatchIncs({
+                    type: "ADD_DETAILS", 
+                    id: id,
+                    amount: values.amount,  
+                    note: values.note,
+                    selectedDate:  selectedDate,
+                    month: month(selectedDate)
+                  })
+                  dispatch({
+                    type: "ADD_INC_INFO_ONLY",
+                    inc: values.amount
+                    }) 
+                  dispatchAccount({
+                    type: "TRANSFER_IN",
+                    amount: values.amount,
+                    id: accountIndex.id
+                  }) } else if(type ==="exp") {
                   dispatchExps({
                     type: "ADD_DETAILS", 
                     accountId: accountIndex.id,
@@ -141,30 +162,32 @@ const AccountForm = memo((props) => {
                 handleClose();
                 
               }}
-        >
-            <Categories  id={id} type={type} />
-            {type==="exp" 
-              &&  <div>
+        >   
+            
+            <Categories  id={id} type={type}  />
+        
+            <div>
                       
-                      <Autocomplete
-                        value={value}
-                        onChange={(event, newValue) => {
-                          setValue(newValue);
-                        }}
-                        inputValue={inputValue}
-                        onInputChange={(event, newInputValue) => {
-                          setInputValue(newInputValue);
-                        }}
-                        id="controllable-states-demo"
-                        options={accountNames}
-                        style={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Choose an account" variant="outlined" />}
-                      />
-                </div>
-              }
+                  <Autocomplete
+                    value={value}
+                    onChange={(event, newValue) => {
+                      setValue(newValue);
+                    }}
+                    inputValue={inputValue}
+                    onInputChange={(event, newInputValue) => {
+                      setInputValue(newInputValue);
+                    }}
+                    id="controllable-states-demo"
+                    options={accountNames}
+                    style={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="Choose an account" variant="outlined" />}
+                  />
+            </div>
+            
             <div className={classes.margin}>
               <Grid container spacing={1} alignItems="flex-end">
-                <Grid item className={classes.picked}>
+                <Grid item className={classes.picked} >
+                    
                   {pickedIcon 
                     && <pickedIcon.icon 
                           fontsize='small'
@@ -193,6 +216,7 @@ const AccountForm = memo((props) => {
                     onChange={handleChange('amount')} 
                     label={(props.type==="inc") ? "Add Income" : "Add Expense"}
                     required
+                    type="number"
                     fullWidth
                   />
                 </Grid>

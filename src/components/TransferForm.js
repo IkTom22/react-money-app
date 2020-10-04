@@ -56,10 +56,11 @@ const TransferForm= memo((props) => {
 
     let accountFromIndex = accounts.findIndex(e =>e.id === id)
     let accountIndex = accounts.findIndex(e => e.name === value);
+
     let accountTo = accounts[accountIndex];
+
     let accountFrom = accounts[accountFromIndex];
-    console.log(accountTo)
-    console.log(accountFrom)
+
     ValidatorForm.addValidationRule('isFundsSufficient', value => 
            value <= mainBalance.remaining
     );
@@ -78,7 +79,18 @@ const TransferForm= memo((props) => {
                         type:"TRANSFER_OUT",
                         amount: values.amount
                     })
-                } else if (type==="account"){
+                } else if (type==="account" && inputValue === mainBalance.name ){
+
+                   dispatchAccounts({
+                        type: "TRANSFER_OUT",
+                        id: accountFrom.id,
+                        amount: values.amount
+                    });
+                    dispatch({
+                        type:"TRANSFER_IN",
+                        amount: values.amount
+                    })
+                } else {
                     dispatchAccounts({
                         type: "TRANSFER_IN",
                         id: accountTo.id,
@@ -89,6 +101,7 @@ const TransferForm= memo((props) => {
                         id: accountFrom.id,
                         amount: values.amount
                     })
+
                 }
                 reset();
                 props.handleClose();
