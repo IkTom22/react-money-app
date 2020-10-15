@@ -63,7 +63,7 @@ function DashboardDialogs(props){
      return (
         <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} className={classes.root} style={{height: '100vh', overflow: 'auto', backgroundColor: type==='inc' ? pageInc: pageExp}}>
             <Grid container  direction="column" alignItems="center" style={{height: '100vh', overflow: 'auto', backgroundColor: type==='inc' ? pageInc: pageExp}}>
-                <IconButton onClick={handleClose} color="white" aria-label="go back" style={{position: 'fixed', right: '1rem', top: '3.5rem', color: 'white'}}>
+                <IconButton onClick={handleClose} aria-label="go back" style={{position: 'fixed', right: '1rem', top: '3.5rem', color: 'white'}}>
                     <ExitToAppTwoToneIcon />
                 </IconButton> 
                 <Paper elevation={3} style={{ marginTop: "3rem", width: "50%", padding: '0.5rem 0'}}>

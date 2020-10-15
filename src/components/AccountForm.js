@@ -112,6 +112,7 @@ const AccountForm = memo((props) => {
             className={classes.root} 
             onSubmit={e => {
                 e.preventDefault();
+
                 if(type==="inc" && inputValue === mainBalance.name ) {
                   dispatchIncs({
                       type: "ADD_DETAILS", 
@@ -141,7 +142,8 @@ const AccountForm = memo((props) => {
                     type: "TRANSFER_IN",
                     amount: values.amount,
                     id: accountIndex.id
-                  }) } else if(type ==="exp") {
+                  }) 
+                } else if(type ==="exp") {
                   dispatchExps({
                     type: "ADD_DETAILS", 
                     accountId: accountIndex.id,
@@ -190,7 +192,7 @@ const AccountForm = memo((props) => {
                     
                   {pickedIcon 
                     && <pickedIcon.icon 
-                          fontsize='small'
+                      fontSize='small'
                           style={{
                                   backgroundColor: pickedIcon.backgroundColor,
                                   borderRadius: '50%',
@@ -200,7 +202,7 @@ const AccountForm = memo((props) => {
                     />}
                     {pickedIconExp 
                       && <pickedIconExp.icon 
-                            fontsize='small'
+                        fontSize='small'
                             style={{
                                     backgroundColor: pickedIconExp.backgroundColor,
                                     borderRadius: '50%',

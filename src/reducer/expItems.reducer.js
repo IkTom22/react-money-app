@@ -1,3 +1,4 @@
+import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 
 const expItemsReducer = (state, action)=>{
     console.log(state)
@@ -12,8 +13,8 @@ const expItemsReducer = (state, action)=>{
                                 title: action.title, 
                                 icon: action.icon, 
                                 backgroundColor: action.backgroundColor, 
-                                selectedDate: action.selectedDate,
-                                month: action.month
+                                // selectedDate: action.selectedDate,
+                                // month: action.month
                             },
                             ...state.slice(index +1)
                         ] 
@@ -24,14 +25,37 @@ const expItemsReducer = (state, action)=>{
                                     title: action.title,
                                     icon: action.icon,
                                     backgroundColor: action.backgroundColor,
-                                    selectedDate: action.selectedDate,
-                                    month: action.month
+                                    // selectedDate: action.selectedDate,
+                                    // month: action.month
                                 }
                         ] 
               
         case "ADD_DETAILS":     
-            return  state.map(e => 
-                e.id === action.id ? {...e, amount: Number(action.amount), note: action.note, selectedDate: action.selectedDate,accountId: action.accountId, month: action.month} : e) 
+            return state[index] 
+            ?  [...state.slice(0, index),
+                {
+                    ...state[index],  
+                    amount: Number(action.amount), 
+                    note: action.note, 
+                    selectedDate: action.selectedDate, 
+                    month: action.month
+                },
+                ...state.slice(index +1)
+            ]
+            : [ ...state,
+                {
+                    id: action.id, 
+                    title: 'misc', 
+                    icon: BubbleChartOutlinedIcon,
+                    amount: Number(action.amount), 
+                    note: action.note, 
+                    selectedDate: action.selectedDate, 
+                    month: action.month
+                }
+
+            ]
+            // return  state.map(e => 
+            //     e.id === action.id ? {...e, amount: Number(action.amount), note: action.note, selectedDate: action.selectedDate,accountId: action.accountId, month: action.month} : e) 
         case "ADD_DATE":     
             return  state.map(e => 
                 e.id === action.id ? {...e, selectedDate: action.selectedDate} : e)         

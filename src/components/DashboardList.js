@@ -51,10 +51,10 @@ function DashboardList(props){
     let pickedIncIcon = incs[indexIncIcon];
     let pickedExpIcon = exps[indexExpIcon];
 
-    //const [dense, setDense] = React.useState(false);
+    const [dense, setDense] = React.useState(false);
     
-    // const [secondary, setSecondary] = React.useState(false);
-    // icon && console.log(icon);
+    const [secondary, setSecondary] = React.useState(false);
+  
 
     return (
         
@@ -88,7 +88,7 @@ function DashboardList(props){
                 </IconButton>  
              
                 <ListItemText
-                  primary={title ? title : 'misc'}
+                  primary={title }
                 />
                 <ListItem>
                   <IconButton style={{marginLeft: 'auto'}} aria-label="amount" >
@@ -96,8 +96,6 @@ function DashboardList(props){
                   </IconButton>
                 </ListItem>
               </ListItem>
-          
-            
         )
     
 }

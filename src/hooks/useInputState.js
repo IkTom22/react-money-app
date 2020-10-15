@@ -5,7 +5,7 @@ export default initialVal => {
   const [values, setValues] = useState({
     title: '',
     amount: '',
-    icon: '',
+    icon: {},
     note: '',
     id: '',
     accountId: '', 
@@ -25,7 +25,7 @@ export default initialVal => {
     setValues({
       title: '',
       amount: '',
-      iconName: '',
+      icon: {},
       note: '',
       id: '',
       mainAccount:'',
