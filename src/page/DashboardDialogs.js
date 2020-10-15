@@ -46,22 +46,22 @@ const useStyles= makeStyles((theme) => ({
         }
     
   }))
-
-  const Transition = React.forwardRef(function Transition(props, ref) {
+  
+//   const Transition = React.forwardRef(function Transition(props, ref, type) {
     
-    return <Slide direction= "left" ref={ref} {...props} />;
-  });
+//     return <Slide direction= {type==="exp"? "left" : "right"} ref={ref} {...props} />;
+//   });
   
 function DashboardDialogs(props){
-    const {type, handleClose, open} = props;
+    const {type, handleClose, open, transition} = props;
     const classes = useStyles();
     const balance = useContext(BalanceContext);
     console.log(type)
 
-
+    
 
      return (
-        <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} className={classes.root} style={{height: '100vh', overflow: 'auto', backgroundColor: type==='inc' ? pageInc: pageExp}}>
+        <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={transition} className={classes.root} style={{height: '100vh', overflow: 'auto', backgroundColor: type==='inc' ? pageInc: pageExp}}>
             <Grid container  direction="column" alignItems="center" style={{height: '100vh', overflow: 'auto', backgroundColor: type==='inc' ? pageInc: pageExp}}>
                 <IconButton onClick={handleClose} aria-label="go back" style={{position: 'fixed', right: '1rem', top: '3.5rem', color: 'white'}}>
                     <ExitToAppTwoToneIcon />

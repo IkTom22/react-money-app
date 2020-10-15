@@ -1,7 +1,6 @@
 import React, {useContext, memo } from 'react';
 import useInputState from'../hooks/useInputState';
 import 'react-dates/lib/css/_datepicker.css';
-// import moment from 'moment';
 import Categories from './Categories';
 import {DispatchBalContext, BalanceContext} from '../contexts/balance.context';
 import {DispatchIncsContext, incItemsContext} from '../contexts/inc/incItems.context';
@@ -14,23 +13,14 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Fab from '@material-ui/core/Fab';
 import DoneIcon from '@material-ui/icons/Done';
-//import cyan from '@material-ui/core/colors/cyan';
 import red from '@material-ui/core/colors/red';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
 import Calender from './Calender';
-// import { BottomNavigationAction } from '@material-ui/core';
-// import DateFnsUtils from '@date-io/date-fns';
-// import {
-//   MuiPickersUtilsProvider,
-//   KeyboardDatePicker,
-// } from '@material-ui/pickers';
 
-//const buttonInc = cyan['A700'];
 const buttonInc = deepPurple['A700'];
 const buttonExp = red['A200'];
-// const now = moment().format('Do MMM YYYY');
-// console.log(now)
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",

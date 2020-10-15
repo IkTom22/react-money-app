@@ -8,13 +8,13 @@ import Grid from '@material-ui/core/Grid';
 import DashboardDialogs from '../../page/DashboardDialogs';
 import Slide from '@material-ui/core/Slide';
 const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
+    return <Slide direction="right" ref={ref} {...props} />;
   });
 
 function IncTotal(props){
     const {classes} = props;
     const balance = useContext(BalanceContext);
-    const incItems = useContext(incItemsContext);
+    // const incItems = useContext(incItemsContext);
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -32,7 +32,7 @@ function IncTotal(props){
                 <Button onClick={handleClickOpen} className={classes.title} color='primary'>${balance.inc}</Button>
                
             </Grid>
-            <DashboardDialogs type='inc' handleClose={handleClose} open={open}/>
+            <DashboardDialogs type='inc' transition={Transition} handleClose={handleClose} open={open}/>
         </React.Fragment>
         
     )

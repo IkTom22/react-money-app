@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import DashboardDialogs from '../../page/DashboardDialogs';
 import Slide from '@material-ui/core/Slide';
 const Transition = React.forwardRef(function Transition(props, ref) {
-        return <Slide direction="up" ref={ref} {...props} />;
+        return <Slide direction="left" ref={ref} {...props} />;
       });
       
 
@@ -32,7 +32,7 @@ function ExpTotal(props){
                     <Button onClick={handleClickOpen} className={classes.title}  color="secondary">${balance.exp}</Button>
                
             </Grid>
-            <DashboardDialogs type='exp' handleClose={handleClose} open={open}/>
+            <DashboardDialogs type='exp' transition={Transition} handleClose={handleClose} open={open}/>
         </React.Fragment>
     )
 }
