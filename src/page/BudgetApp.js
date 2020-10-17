@@ -13,7 +13,7 @@ import yellow from '@material-ui/core/colors/yellow';
 const moneyPrimary = yellow[400];
 const useStyles= makeStyles((theme) => ({
   root: {
-    height: "auto",
+    
     backgroundColor: moneyPrimary,
     height: '100vh'
     

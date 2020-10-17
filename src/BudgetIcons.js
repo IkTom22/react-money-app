@@ -1,4 +1,3 @@
-import React from 'react';
 import AccountBalanceOutlinedIcon from '@material-ui/icons/AccountBalanceOutlined';
 import CardGiftcardOutlinedIcon from '@material-ui/icons/CardGiftcardOutlined';
 import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
@@ -30,7 +29,6 @@ import grey from '@material-ui/core/colors/grey';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 import red from '@material-ui/core/colors/red';
 import deepOrange from '@material-ui/core/colors/deepOrange';
-import teal from '@material-ui/core/colors/teal';
 import orange from '@material-ui/core/colors/orange';
 import yellow from '@material-ui/core/colors/yellow';
 import brown from '@material-ui/core/colors/brown';

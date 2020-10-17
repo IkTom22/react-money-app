@@ -9,8 +9,7 @@ import Details from '../../page/DashboardDialogs';
 
 const useStyles= makeStyles((theme) => ({
     root: {
-      height: "auto",
-    //   backgroundColor: moneyPrimary,
+
       height: '100vh'
       
     },

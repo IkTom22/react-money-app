@@ -1,19 +1,18 @@
-// import  React, {useContext} from 'react';
-// import {AccountsContext } from '../contexts/accounts.context';
-// import {BalanceContext } from '../contexts/balance.context';
 
 
+export const findNames = (arr)=> arr.map(a=> a.name);
+
+export const findAvailableAccounts = (arr, key) => arr.filter(e =>e !== key);
+export const findIndTo = (arr, value) =>{
+    let accountIndex = arr.findIndex(e => e.name === value);
+    return arr[accountIndex];
+}
+
+export const findIndFrom = (arr, key) =>{
+    let accountFromIndex = arr.findIndex(e =>e.id=== key)
+    return  arr[accountFromIndex];
+}
 
 
-// const accounts = useContext(AccountsContext);
-// const mainBalance = useContext(BalanceContext);
-
-// const accountNames = accounts.map(a=> a.name);
-// accountNames.push(mainBalance.name);
-// export const availableAccounts = (name) => accountNames.filter(e =>e !== name);
-
-
-// export const  indexId = (id, array) =>array.findIndex(e =>e.id === id)
-// export const  indexVAlue = (value, array) => accounts.findIndex(e => e.name === value);
 
 

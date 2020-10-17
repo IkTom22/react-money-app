@@ -8,12 +8,9 @@ import DashboardLists from '../components/DashboardLists';
 import {BalanceContext} from '../contexts/balance.context';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import ListItem from '@material-ui/core/ListItem';
+
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
-// import Typography from '@material-ui/core/Typography';
-// import CloseIcon from '@material-ui/icons/Close';
-import Slide from '@material-ui/core/Slide';
+
 import red from '@material-ui/core/colors/red';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 

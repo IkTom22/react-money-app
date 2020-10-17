@@ -1,6 +1,7 @@
 import React, {useContext, memo} from 'react';
 import useInputState from'../hooks/useInputState';
 import {AccountsContext, DispatchContext} from '../contexts/accounts.context';
+import {findNames, findAvailableAccounts,findIndTo, findIndFrom} from '../helper/selections';
 import {BalanceContext, DispatchBalContext} from '../contexts/balance.context';
 import { makeStyles } from '@material-ui/core/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -9,6 +10,7 @@ import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import DoneIcon from '@material-ui/icons/Done';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,18 +22,15 @@ const useStyles = makeStyles((theme) => ({
   
     '& > *': {
       margin: theme.spacing(2),
-      
     },
     title :{
         textAlign: 'center',
-        
     },
     doneIcon: {
         width: "3rem",
         height: "3rem",
     
     },
-
   },
 }));
 
@@ -44,25 +43,26 @@ const TransferForm= memo((props) => {
     const mainBalance = useContext(BalanceContext);
     const dispatch = useContext(DispatchBalContext);
 
-    const accountNames = accounts.map(a=> a.name);
-   
+    const accountNames = findNames(accounts);
     accountNames.push(mainBalance.name);
-    let availableAccounts = accountNames.filter(e =>e !== name);
+
+   const availableAccounts = findAvailableAccounts(accountNames, name);
+
 
     const [values, handleChange, reset] = useInputState("");
     const [value, setValue] = React.useState(availableAccounts[0]);
     const [inputValue, setInputValue] = React.useState('');
     const classes = useStyles();
 
-    let accountFromIndex = accounts.findIndex(e =>e.id === id)
-    let accountIndex = accounts.findIndex(e => e.name === value);
+    let accountTo= findIndTo(accounts,  value);
+    let accountFrom = findIndFrom(accounts, id);
 
-    let accountTo = accounts[accountIndex];
 
-    let accountFrom = accounts[accountFromIndex];
-
-    ValidatorForm.addValidationRule('isFundsSufficient', value => 
-           value <= mainBalance.remaining
+    ValidatorForm.addValidationRule('isFundsSufficient', (value, type) => 
+        type ==="main" 
+            ? value <= mainBalance.remaining
+            : value <= accountFrom.total
+            
     );
     return(
         <ValidatorForm

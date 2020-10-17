@@ -13,9 +13,10 @@ function useLocalStorageReducer(key, defaultVal, reducer) {
         return value;
     })
 
-    useEffect(() => {
+     useEffect(() => {
         window.localStorage.setItem(key, JSON.stringify(state));
     }, [state]);
+  
   
     return [state, dispatch];
 }

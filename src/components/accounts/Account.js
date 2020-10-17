@@ -10,18 +10,18 @@ import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
 import { Grid } from '@material-ui/core';
 import AccountDetailesButton from './AccountDetailsButton';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      width: '100%',
-      maxWidth: 360,
-      backgroundColor: theme.palette.background.paper,
-    },
-    title: {
-      margin: theme.spacing(4, 0, 2),
-    },
-}));
+// const useStyles = makeStyles((theme) => ({
+//     root: {
+//       width: '100%',
+//       maxWidth: 360,
+//       backgroundColor: theme.palette.background.paper,
+//     },
+//     title: {
+//       margin: theme.spacing(4, 0, 2),
+//     },
+// }));
 function CheckboxListSecondary() {
-    const classes = useStyles();
+    // const classes = useStyles();
     const [checked, setChecked] = React.useState([1]);
   
     const handleToggle = (value) => () => {

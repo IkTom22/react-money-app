@@ -1,4 +1,4 @@
-import React, {useContext, memo} from 'react';
+import React, {useContext} from 'react';
 import {BalanceContext} from '../contexts/balance.context';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';

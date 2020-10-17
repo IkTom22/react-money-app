@@ -12,7 +12,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
       
 
 function ExpTotal(props){
-    const {classes, type} = props;
+    const {classes} = props;
     const balance = useContext(BalanceContext);
     const [open, setOpen] = React.useState(false);
 
