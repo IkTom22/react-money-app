@@ -41,18 +41,8 @@ const useStyles = makeStyles((theme) => ({
 
 const AddExpenses=()=>{
     // const accounts = useContext(DispatchContext);
-     const classes = useStyles();
-    // const [open, setOpen] = React.useState(false);
-   
-    // const handleOpen = () => {
-    //     setOpen(true);
-    // };
+const classes = useStyles();
 
-    // const handleClose = () => {
-    //     setOpen(false);
-    // };
-
-//Dialog
 const [open, setOpen] = React.useState(false);
 const [scroll, setScroll] = React.useState('paper');
 

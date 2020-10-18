@@ -44,6 +44,7 @@ const expItemsReducer = (state, action)=>{
             ]
             : [ ...state,
                 {
+                    accountId: action.accountId,    
                     id: action.id, 
                     title: 'misc', 
                     icon: BubbleChartOutlinedIcon,

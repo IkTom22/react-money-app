@@ -7,3 +7,5 @@ export  const month = (date)=> {
 }
 
 
+
+export const sortByMonth = (arr, thisMonth) => arr.filter(e => thisMonth === e.month) 

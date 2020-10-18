@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
  
 const TransferForm= memo((props) => {
 
@@ -48,7 +47,6 @@ const TransferForm= memo((props) => {
 
    const availableAccounts = findAvailableAccounts(accountNames, name);
 
-
     const [values, handleChange, reset] = useInputState("");
     const [value, setValue] = React.useState(availableAccounts[0]);
     const [inputValue, setInputValue] = React.useState('');
@@ -57,12 +55,11 @@ const TransferForm= memo((props) => {
     let accountTo= findIndTo(accounts,  value);
     let accountFrom = findIndFrom(accounts, id);
 
-
+    console.log(accountFrom)
     ValidatorForm.addValidationRule('isFundsSufficient', (value, type) => 
-        type ==="main" 
+        !accountFrom
             ? value <= mainBalance.remaining
-            : value <= accountFrom.total
-            
+            : value <= accountFrom.total  
     );
     return(
         <ValidatorForm

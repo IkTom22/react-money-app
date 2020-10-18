@@ -22,6 +22,7 @@ const incItemsReducer = (state, action)=>{
                         ] 
                         : [...state,
                                 {
+                                    accountId: action.accountId,
                                     id: action.id, 
                                     title: action.title, 
                                     icon: action.icon,
@@ -45,6 +46,7 @@ const incItemsReducer = (state, action)=>{
                     ]
                     : [ ...state,
                         {
+                            accountId: action.accountId,
                             id: action.id, 
                             title: 'misc', 
                             icon: BubbleChartOutlinedIcon,

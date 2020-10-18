@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Dialog from '@material-ui/core/Dialog';
 import DashboardLists from '../components/DashboardLists';
-import {BalanceContext} from '../contexts/balance.context';
+//import {BalanceContext} from '../contexts/balance.context';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 
@@ -50,10 +50,18 @@ const useStyles= makeStyles((theme) => ({
 //   });
   
 function DashboardDialogs(props){
-    const {type, handleClose, open, transition} = props;
+    const {
+        type, 
+        handleClose, 
+        open, 
+        transition, 
+        expMonthlyTotal,
+        incMonthlyTotal
+    } = props;
+    
     const classes = useStyles();
-    const balance = useContext(BalanceContext);
-    console.log(type)
+    //const balance = useContext(BalanceContext);
+    // console.log(monthlyInc)
 
     
 
@@ -80,15 +88,15 @@ function DashboardDialogs(props){
                             </div>
                             
                             <div className={classes.title} >   
-                                { type === "exp" ? `$ ${balance.exp}`:`$ ${balance.inc}` } 
+                                { type === "exp" ? `$ ${expMonthlyTotal}`:`$ ${incMonthlyTotal}` } 
                             </div>
                         </List>
                     </Grid>
                 </Paper>
                 <Grid container style={{ marginTop: "1.5rem", width: "90%" }} >
                     
-                        <DashboardLists type={type}/>
-                   
+                    <DashboardLists type={type} />
+                     
                 </Grid>
                 
         </Grid>

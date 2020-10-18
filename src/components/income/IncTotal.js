@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
-import {BalanceContext} from '../../contexts/balance.context';
 import {incItemsContext} from '../../contexts/inc/incItems.context';
+import{sortByMonth} from '../../helper/datePicker';
+import {sumTotal} from '../../helper/filterAmount';
 import { withStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import styles from '../../styles/BalanceStyles';
@@ -12,10 +13,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   });
 
 function IncTotal(props){
-    const {classes} = props;
-    const balance = useContext(BalanceContext);
-    // const incItems = useContext(incItemsContext);
+    const {classes, currentMonth} = props;
+
+    const incItems = useContext(incItemsContext);
+
     const [open, setOpen] = React.useState(false);
+    let sortIncByMonth = sortByMonth(incItems, currentMonth);
+    let incMonthlyTotal = sumTotal(sortIncByMonth);
 
     const handleClickOpen = () => {
       setOpen(true);
@@ -29,10 +33,16 @@ function IncTotal(props){
             <Grid item xs={6}  className={classes.details}>
                
                 <div className={classes.subTitle}>Income</div>
-                <Button onClick={handleClickOpen} className={classes.title} color='primary'>${balance.inc}</Button>
+                <Button onClick={handleClickOpen} className={classes.title} color='primary'>${incMonthlyTotal}</Button>
                
             </Grid>
-            <DashboardDialogs type='inc' transition={Transition} handleClose={handleClose} open={open}/>
+            <DashboardDialogs 
+              type='inc' 
+              incMonthlyTotal ={incMonthlyTotal}
+              transition={Transition} 
+              handleClose={handleClose} 
+              open={open}
+              />
         </React.Fragment>
         
     )

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, {useContext, memo } from 'react';
 import useInputState from'../hooks/useInputState';
 import 'react-dates/lib/css/_datepicker.css';
@@ -6,6 +7,7 @@ import {DispatchBalContext, BalanceContext} from '../contexts/balance.context';
 import {DispatchIncsContext, incItemsContext} from '../contexts/inc/incItems.context';
 import { DispatchExpsContext, expItemsContext} from '../contexts/exp/expItems.context';
 import { AccountsContext, DispatchContext } from '../contexts/accounts.context';
+import {findNames} from '../helper/selections';
 import { makeStyles } from '@material-ui/core/styles';
 import {month} from '../helper/datePicker';
 import Grid from '@material-ui/core/Grid';
@@ -70,7 +72,8 @@ const AccountForm = memo((props) => {
     const accounts = useContext(AccountsContext);
     const dispatchAccount= useContext(DispatchContext);
 
-    const accountNames = accounts.map(a=> a.name);
+    const accountNames = findNames(accounts);
+    //const accountNames = accounts.map(a=> a.name);
     accountNames.push(mainBalance.name);
     const classes = useStyles();
 
@@ -87,8 +90,6 @@ const AccountForm = memo((props) => {
  
     let pickedIcon = incItems[indexInc];
     let pickedIconExp = expItems[indexExp]
-    pickedIcon && console.log(pickedIcon)
-
 
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const handleDateChange = (date) => {
@@ -118,6 +119,7 @@ const AccountForm = memo((props) => {
                 } else if (type==="inc" && inputValue !== mainBalance.name ){
                   dispatchIncs({
                     type: "ADD_DETAILS", 
+                    accountId: accountIndex.id,
                     id: id,
                     amount: values.amount,  
                     note: values.note,
