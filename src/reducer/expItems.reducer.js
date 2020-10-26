@@ -38,7 +38,8 @@ const expItemsReducer = (state, action)=>{
                     amount: Number(action.amount), 
                     note: action.note, 
                     selectedDate: action.selectedDate, 
-                    month: action.month
+                    month: action.month,
+                    year: action.year
                 },
                 ...state.slice(index +1)
             ]
@@ -51,7 +52,8 @@ const expItemsReducer = (state, action)=>{
                     amount: Number(action.amount), 
                     note: action.note, 
                     selectedDate: action.selectedDate, 
-                    month: action.month
+                    month: action.month,
+                    year: action.year
                 }
 
             ]
@@ -62,7 +64,7 @@ const expItemsReducer = (state, action)=>{
                 e.id === action.id ? {...e, selectedDate: action.selectedDate} : e)         
         case "ADD_EXP_DETAILS":  
             return  state.map(e => 
-                e.id === action.id ? {...e, accountId:action.id, id: action.id,  amount: Number(action.amount), note: action.note, month: action.month } : e)   
+                e.id === action.id ? {...e, accountId:action.id, id: action.id,  amount: Number(action.amount), note: action.note, month: action.month, year: action.year } : e)   
         // case "TOGGLE_BUTTON" :
         //     return  state.map(e =>
         //         e.id === action.id ? { ...e, button: !e.button} : e

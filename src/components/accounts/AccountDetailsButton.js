@@ -1,18 +1,18 @@
-import React  from 'react';
+import React, {useContext}  from 'react';
 import Fab from '@material-ui/core/Fab';
 import { makeStyles } from '@material-ui/core/styles';
-//import Modal from '@material-ui/core/Modal';
-import Dialog from '@material-ui/core/Dialog';
-// import Backdrop from '@material-ui/core/Backdrop';
-// import Fade from '@material-ui/core/Fade';
-// import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
+import {incItemsContext} from '../../contexts/inc/incItems.context';
+
+import DashboardDialogs from '../../page/DashboardDialogs';
+import{sortByMonth} from '../../helper/datePicker';
+import {sumTotal} from '../../helper/filterAmount';
 import DetailsTwoToneIcon from '@material-ui/icons/DetailsTwoTone';
 import Slide from '@material-ui/core/Slide';
 // import SyncAltRoundedIcon from '@material-ui/icons/SyncAltRounded';
 
 
 import yellow from '@material-ui/core/colors/yellow';
-import AccountDetailsDialog from './AccountDetailsDialog';
+//import AccountDetailsDialog from './AccountDetailsDialog';
 
 const buttonColor = yellow["A100"]
 
@@ -47,9 +47,10 @@ const useStyles = makeStyles((theme) => ({
   function AccountDetailsButton(props){
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-    console.log(props)
-
-    
+    const {currentYear, currentMonth} = props
+    const incItems = useContext(incItemsContext);
+    let sortIncByMonth = sortByMonth(incItems, currentMonth, currentYear);
+    let incMonthlyTotal = sumTotal(sortIncByMonth);
 
     const handleOpen = () => {
         setOpen(true);
@@ -63,18 +64,15 @@ const useStyles = makeStyles((theme) => ({
             <Fab aria-label="allocate funds" className={classes.transfer} onClick={handleOpen} >
                 <DetailsTwoToneIcon />
             </Fab>
-            <Dialog 
-                fullScreen 
-                open={open} 
-                onClose={handleClose} 
-                TransitionComponent={Transition} 
-                className={classes.root} 
-                style={{height: '100vh', overflow: 'auto'}}
-            >
-                <AccountDetailsDialog  {...props} handleClose={handleClose}/>
-            </Dialog>
-       
-      </React.Fragment> 
+            <DashboardDialogs 
+              type='both'
+              incMonthlyTotal ={incMonthlyTotal}
+              transition={Transition} 
+              handleClose={handleClose} 
+              open={open}
+              currentYear = {currentYear}
+              />
+          </React.Fragment> 
     )
 }
 // function AccountDetailsButton(props){

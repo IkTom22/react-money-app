@@ -5,21 +5,12 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import TransferMoney from '../TransferMoney';
+import{month} from '../../helper/datePicker';
 // import DetailsTwoToneIcon from '@material-ui/icons/DetailsTwoTone';
 import EditTwoToneIcon from "@material-ui/icons/EditTwoTone";
 import { Grid } from '@material-ui/core';
 import AccountDetailesButton from './AccountDetailsButton';
 
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//       width: '100%',
-//       maxWidth: 360,
-//       backgroundColor: theme.palette.background.paper,
-//     },
-//     title: {
-//       margin: theme.spacing(4, 0, 2),
-//     },
-// }));
 function CheckboxListSecondary() {
     // const classes = useStyles();
     const [checked, setChecked] = React.useState([1]);
@@ -33,7 +24,6 @@ function CheckboxListSecondary() {
       } else {
         newChecked.splice(currentIndex, 1);
       }
-  
       setChecked(newChecked);
     };
 }
@@ -48,7 +38,11 @@ function generate(element) {
 const Account = memo((props) => {
    
     // const classes = useStyles();
-    const {id, name, goal, toGo, total, exp} = props
+    const {id, name, goal, toGo, total} = props;
+    let currentDate = new Date();
+    let currentMonth = month(currentDate);
+    let currentYear = currentDate.getFullYear();
+
     //const [secondary, setSecondary] = React.useState(false);
     return (
         
@@ -60,7 +54,7 @@ const Account = memo((props) => {
           </ListItem>
        
             <ListItemSecondaryAction style={{width:"20%", display: "flex", alignItems: "center"}}>
-              <AccountDetailesButton {...props} />
+              <AccountDetailesButton {...props} currentMonth currentYear/>
               <IconButton aria-label='Edit' >
                 <EditTwoToneIcon  />
               </IconButton>

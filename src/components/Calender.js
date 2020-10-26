@@ -12,6 +12,9 @@ export default function MaterialUIPickers(props) {
   const{ handleDateChange, selectedDate} = props;
     
   handleDateChange(selectedDate)
+  console.log(selectedDate)
+  let d = selectedDate.getDate();
+  console.log(d)
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify="space-around">

@@ -15,11 +15,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
       
 
 function ExpTotal(props){
-    const {classes, currentMonth} = props;
+    const {classes, currentMonth, currentYear} = props;
     const expItems = useContext(expItemsContext);
     const [open, setOpen] = React.useState(false);
 
-    let sortExpByMonth = sortByMonth(expItems, currentMonth);
+    let sortExpByMonth = sortByMonth(expItems, currentMonth, currentYear );
     let expMonthlyTotal = sumTotal(sortExpByMonth);
   
 
@@ -45,6 +45,7 @@ function ExpTotal(props){
               transition={Transition} 
               handleClose={handleClose} 
               open={open}
+              currentYear = {currentYear}
             />
         </React.Fragment>
     )

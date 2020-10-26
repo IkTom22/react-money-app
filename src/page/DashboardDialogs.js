@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 // import Button from '@material-ui/core/Button';
@@ -56,7 +56,8 @@ function DashboardDialogs(props){
         open, 
         transition, 
         expMonthlyTotal,
-        incMonthlyTotal
+        incMonthlyTotal,
+        currentYear
     } = props;
     
     const classes = useStyles();
@@ -88,14 +89,14 @@ function DashboardDialogs(props){
                             </div>
                             
                             <div className={classes.title} >   
-                                { type === "exp" ? `$ ${expMonthlyTotal}`:`$ ${incMonthlyTotal}` } 
+                                {type === "exp" ? `$ ${expMonthlyTotal}`:`$ ${incMonthlyTotal}` } 
                             </div>
                         </List>
                     </Grid>
                 </Paper>
                 <Grid container style={{ marginTop: "1.5rem", width: "90%" }} >
                     
-                    <DashboardLists type={type} />
+                    <DashboardLists type={type} currentYear={currentYear}/>
                      
                 </Grid>
                 
@@ -105,3 +106,4 @@ function DashboardDialogs(props){
 }
 
 export default DashboardDialogs;
+ // { type === "exp" ? `$ ${expMonthlyTotal}`:`$ ${incMonthlyTotal}` } 

@@ -40,7 +40,8 @@ const incItemsReducer = (state, action)=>{
                             amount: Number(action.amount), 
                             note: action.note, 
                             selectedDate: action.selectedDate, 
-                            month: action.month
+                            month: action.month,
+                            year: action.year
                         },
                         ...state.slice(index +1)
                     ]
@@ -53,7 +54,8 @@ const incItemsReducer = (state, action)=>{
                             amount: Number(action.amount), 
                             note: action.note, 
                             selectedDate: action.selectedDate, 
-                            month: action.month
+                            month: action.month,
+                            year: action.year
                         }
 
                     ]

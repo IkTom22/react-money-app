@@ -105,6 +105,9 @@ const TransferForm= memo((props) => {
               }}
         >
             <Typography variant="subtitle1" className={classes.title} color='primary'> 
+              {name}
+            </Typography>  
+            <Typography variant="subtitle1" className={classes.title} color='primary'> 
             {type==="main" && `Available Funds $ ${mainBalance.remaining}`} 
             {type==="account" && `Available Funds $ ${accountFrom.total}` }
             </Typography>  

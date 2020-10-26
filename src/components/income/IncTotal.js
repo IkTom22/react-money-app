@@ -13,12 +13,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   });
 
 function IncTotal(props){
-    const {classes, currentMonth} = props;
+    const {classes, currentMonth, currentYear} = props;
 
     const incItems = useContext(incItemsContext);
 
     const [open, setOpen] = React.useState(false);
-    let sortIncByMonth = sortByMonth(incItems, currentMonth);
+    let sortIncByMonth = sortByMonth(incItems, currentMonth, currentYear);
     let incMonthlyTotal = sumTotal(sortIncByMonth);
 
     const handleClickOpen = () => {
@@ -37,11 +37,12 @@ function IncTotal(props){
                
             </Grid>
             <DashboardDialogs 
-              type='inc' 
+              type='inc'
               incMonthlyTotal ={incMonthlyTotal}
               transition={Transition} 
               handleClose={handleClose} 
               open={open}
+              currentYear = {currentYear}
               />
         </React.Fragment>
         

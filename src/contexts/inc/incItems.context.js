@@ -13,7 +13,8 @@ const defaultIncItems = [
         icon: {}, 
         selectedDate: new Date(), 
         calenderFocused: false, 
-        month: ''
+        month: '',
+        year: ''
     }
 ]
 

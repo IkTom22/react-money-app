@@ -10,23 +10,24 @@ import{month, sortByMonth} from '../helper/datePicker';
 
 
 function DashboardLists(props){
-    const{type} = props;
+    const{type, currentYear} = props;
     const expItems = useContext(expItemsContext);
     const incItems = useContext(incItemsContext);
   
-    let thisMonth = month(new Date())
-    let sortExpByMonth = sortByMonth(expItems, thisMonth);
-    let sortIncByMonth = sortByMonth(incItems, thisMonth);
+    let thisMonth = month(new Date());
+    
+    let sortExpByMonth = sortByMonth(expItems, thisMonth, currentYear);
+    let sortIncByMonth = sortByMonth(incItems, thisMonth, currentYear);
    
     let expGroupedByTitle = groupBy(sortExpByMonth, 'title');
     let incGroupedByTitle = groupBy(sortIncByMonth, 'title');
-
+    console.log(incGroupedByTitle);
     let expCategories = Object.keys(expGroupedByTitle);
     let incCategories= Object.keys(incGroupedByTitle);
-
+    console.log(incCategories);
     let expAmount = sumAmount(expCategories, expGroupedByTitle);
     let incAmount = sumAmount(incCategories, incGroupedByTitle);  
-
+   console.log(incAmount)
     if(expItems.length || incItems.length)
     return ( 
                 type === "inc" 
@@ -36,7 +37,7 @@ function DashboardLists(props){
                     <Grid items style={{width: "100%", marginTop: "1rem"}}>
                     <Paper >
                         <List>
-                            <DashboardList {...inc} key={inc.id} type={type}/>
+                            <DashboardList {...inc} key={inc.id} type={type} listDetails={incGroupedByTitle[inc.title]}/>
                         </List>
                         
                     </Paper>
@@ -49,7 +50,7 @@ function DashboardLists(props){
                     <Grid items style={{width: "100%", marginTop: "1rem"}}>
                     <Paper >
                         <List>
-                                <DashboardList {...exp} key={exp.id} type={type}/>
+                                <DashboardList {...exp} key={exp.id} type={type} listDetails={expGroupedByTitle[exp.title]}/>
                         </List>       
                     </Paper>
                     </Grid>

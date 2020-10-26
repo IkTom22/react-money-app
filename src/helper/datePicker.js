@@ -8,4 +8,9 @@ export  const month = (date)=> {
 
 
 
-export const sortByMonth = (arr, thisMonth) => arr.filter(e => thisMonth === e.month) 
+export const sortByMonth = (arr, thisMonth, budgetYear) => {
+        const sortByYear = arr.filter(e => budgetYear === e.year)
+        return (
+            sortByYear.filter(e => thisMonth === e.month)
+        )
+}

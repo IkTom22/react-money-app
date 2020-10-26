@@ -1,6 +1,6 @@
 import { useReducer, useEffect } from "react";
 function useLocalStorageReducer(key, defaultVal, reducer) {
-  const [state, dispatch] = useReducer(reducer, defaultVal, ()=>{
+  const [state, dispatch] = useReducer( reducer, defaultVal, ()=>{
     let value;
     try {
       value = JSON.parse(

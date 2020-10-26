@@ -58,9 +58,6 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-
-
-
 const AccountForm = memo((props) => {
     const [values, handleChange] = useInputState("");
     const mainBalance = useContext(BalanceContext);
@@ -95,9 +92,9 @@ const AccountForm = memo((props) => {
     const handleDateChange = (date) => {
         setSelectedDate(date);
     };
-   // console.log(selectedDate)
-   
-    
+   let selectedYear = selectedDate.getFullYear();
+   let d = selectedDate.getDate()
+  
     return(
         <form
             className={classes.root} 
@@ -111,7 +108,8 @@ const AccountForm = memo((props) => {
                       amount: values.amount,  
                       note: values.note,
                       selectedDate:  selectedDate,
-                      month: month(selectedDate)
+                      month: month(selectedDate),
+                      year: selectedYear
                     })
                     
                   dispatch({type: "ADD_INC", inc: values.amount}) 
@@ -124,7 +122,8 @@ const AccountForm = memo((props) => {
                     amount: values.amount,  
                     note: values.note,
                     selectedDate:  selectedDate,
-                    month: month(selectedDate)
+                    month: month(selectedDate),
+                    year: selectedYear
                   })
                   dispatch({
                     type: "ADD_INC_INFO_ONLY",
@@ -143,7 +142,8 @@ const AccountForm = memo((props) => {
                     amount: values.amount,  
                     note: values.note,
                     selectedDate:  selectedDate,
-                    month: month(selectedDate)
+                    month: month(selectedDate),
+                    year: selectedYear
                   })
                   dispatch({type: "MINUS_EXP", exp: values.amount})
                   dispatchAccount({
@@ -220,7 +220,8 @@ const AccountForm = memo((props) => {
                 id={id} 
                 type={type} 
                 handleChange={handleChange} 
-                values={values} selectedDate={selectedDate}  
+                values={values} 
+                selectedDate={selectedDate}  
                 handleDateChange={handleDateChange}
               />
               

@@ -14,7 +14,8 @@ const defaultExpItems = [
         icon: {}, 
         selectedDate: new Date(),
         calenderFocused: false,
-        month: ''
+        month: '',
+        year: ''
     }
 ]
 
