@@ -58,8 +58,8 @@ const TransferForm= memo((props) => {
     console.log(accountFrom)
     ValidatorForm.addValidationRule('isFundsSufficient', (value, type) => 
         !accountFrom
-            ? value <= mainBalance.remaining
-            : value <= accountFrom.total  
+            ? value <= Number(mainBalance.remaining)
+            : value <= Number(accountFrom.total)  
     );
     return(
         <ValidatorForm
