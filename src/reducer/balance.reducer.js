@@ -23,7 +23,7 @@ const balanceReducer = (state, action)=>{
             inc: (Number(state.inc) + Number(action.inc)).toFixed(2)
         } 
     case "MINUS_EXP":
-        return {...state, mainAccount: (Number(state.mainAccount) - Number(action.exp)).toFixed(2), exp: (Number(state.exp) + Number(action.exp).toFixed(2))}
+        return {...state, mainAccount: (Number(state.mainAccount) - Number(action.exp)).toFixed(2), exp: (Number(state.exp) + Number(action.exp)).toFixed(2)}
     
     case "TRANSFER_OUT":
         return {...state, remaining: (Number(state.remaining) - Number(action.amount)).toFixed(2)}            

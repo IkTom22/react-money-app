@@ -31,7 +31,7 @@ const accountsReducer = (state, action)=>{
                 account.id === action.accountId
                 ? {...account,
                     exp: (Number(account.exp) + Number(action.amount)).toFixed(2),
-                    total: Number(account.total) - Number(action.amount),
+                    total: (Number(account.total) - Number(action.amount)).toFixed(2),
                     toGo:  account.goal !== 0 && Number(account.toGo) + Number(action.amount)} 
                 : account)
         default: 

@@ -33,8 +33,9 @@ import brown from '@material-ui/core/colors/brown';
 import green from '@material-ui/core/colors/green';
 import indigo from '@material-ui/core/colors/indigo';
 import LocalAtmOutlinedIcon from '@material-ui/icons/LocalAtmOutlined';
-
-
+import SportsVolleyballOutlinedIcon from '@material-ui/icons/SportsVolleyballOutlined';
+import MenuBookOutlinedIcon from '@material-ui/icons/MenuBookOutlined';
+import ColorLensOutlinedIcon from '@material-ui/icons/ColorLensOutlined';
 const BudgetIcons = {
     accounts: [],
     
@@ -53,6 +54,7 @@ const BudgetIcons = {
     exps: [
         {icon: AccountBalanceOutlinedIcon, title:'bank fee',  backgroundColor: grey[700], button: false},
         {icon: LocalGroceryStoreOutlinedIcon, title:'shopping', backgroundColor: amber['A700'], button: false},
+        {icon:SportsVolleyballOutlinedIcon, title: 'sports', backgroundColor: cyan['A400'], button: false},
         {icon: TrainOutlinedIcon, title:'commuting', backgroundColor: deepPurple['A700'], button: false},
         {icon: FlightOutlinedIcon, title:'travel', backgroundColor: lightBlue['A700'],button: false},
         {icon: LoyaltyOutlinedIcon, title:'clothing', backgroundColor: red['A400'], button: false},
@@ -60,6 +62,8 @@ const BudgetIcons = {
         {icon: DevicesOtherOutlinedIcon , title:'Electronics', backgroundColor: indigo[900], button: false},
         {icon: CakeOutlinedIcon , title:'presents', backgroundColor: yellow['A700'], button: false},
         {icon: PrintOutlinedIcon , title:'printing', backgroundColor: cyan[900], button: false},
+        {icon: ColorLensOutlinedIcon , title:'crafts', backgroundColor: purple['A700'], button: false},
+        {icon: MenuBookOutlinedIcon , title:'books', backgroundColor: brown[700], button: false},
         {icon: RestaurantOutlinedIcon , title:'lunch', backgroundColor: orange[900],button: false},
         {icon: QueueMusicOutlinedIcon  , title:'music', backgroundColor: cyan[700], button: false},
         {icon: LocalCafeOutlinedIcon  , title:'drinks', backgroundColor: brown[900], button: false},
