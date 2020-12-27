@@ -14,7 +14,7 @@ const accountsReducer = (state, action)=>{
                 account.id === action.id 
                 ?  {...account, 
                     toGo: Number(account.goal)-(Number(account.total)+Number(action.amount)), 
-                    total: Number(account.total) +Number(action.amount) 
+                    total: (Number(account.total) +Number(action.amount)).toFixed(2) 
                 } : account     
             )  
         case "TRANSFER_OUT":
@@ -22,7 +22,7 @@ const accountsReducer = (state, action)=>{
                 account.id === action.id 
                 ? {...account, 
                     toGo: Number(account.goal)- (Number(account.total)- Number(action.amount)), 
-                    total: Number(account.total) - Number(action.amount)
+                    total: (Number(account.total) - Number(action.amount)).toFixed(2)
                 }  : account 
                
             )
@@ -30,7 +30,7 @@ const accountsReducer = (state, action)=>{
             return state.map(account =>
                 account.id === action.accountId
                 ? {...account,
-                    exp: Number(account.exp) + Number(action.amount),
+                    exp: (Number(account.exp) + Number(action.amount)).toFixed(2),
                     total: Number(account.total) - Number(action.amount),
                     toGo:  account.goal !== 0 && Number(account.toGo) + Number(action.amount)} 
                 : account)
