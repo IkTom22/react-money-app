@@ -48,7 +48,7 @@ const Account = memo((props) => {
           </ListItem>
        
             <ListItemSecondaryAction style={{width:"20%", display: "flex", alignItems: "center"}}>
-              <AccountDetailesButton {...props} currentMonth currentYear/>
+              <AccountDetailesButton {...props} currentMonth={currentMonth} currentYear={currentYear}/>
               <IconButton aria-label='Edit' >
                 <EditTwoToneIcon  />
               </IconButton>

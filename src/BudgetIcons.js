@@ -32,6 +32,7 @@ import yellow from '@material-ui/core/colors/yellow';
 import brown from '@material-ui/core/colors/brown';
 import green from '@material-ui/core/colors/green';
 import indigo from '@material-ui/core/colors/indigo';
+import LocalAtmOutlinedIcon from '@material-ui/icons/LocalAtmOutlined';
 
 
 const BudgetIcons = {
@@ -42,6 +43,7 @@ const BudgetIcons = {
         {icon: CardGiftcardOutlinedIcon  , title: "gift", backgroundColor: pink['A100'], button: false},
         {icon: BrightnessAutoOutlinedIcon , title: "award", backgroundColor: purple['A100'], button: false},
         {icon: SportsOutlinedIcon,   title: "umpire",  backgroundColor: cyan['A200'], button: false},
+        {icon: LocalAtmOutlinedIcon,   title: "income",  backgroundColor: red['A200'], button: false},
         {icon: PanToolOutlinedIcon, title: "extra choires", backgroundColor: lightGreen['A100'], button: false},
         {icon: BubbleChartOutlinedIcon, title: "misc", backgroundColor: lightBlue[50], button: false},
 

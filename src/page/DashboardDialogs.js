@@ -49,7 +49,8 @@ const useStyles= makeStyles((theme) => ({
 //     return <Slide direction= {type==="exp"? "left" : "right"} ref={ref} {...props} />;
 //   });
   
-function DashboardDialogs(props){
+function 
+DashboardDialogs(props){
     const {
         type, 
         handleClose, 
